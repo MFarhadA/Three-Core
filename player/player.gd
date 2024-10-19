@@ -1,0 +1,78 @@
+extends CharacterBody2D
+
+
+const SPEED = 150.0
+const JUMP_VELOCITY = -400.0
+@onready var anim = $AnimatedSprite2D
+@onready var hitbox = $Hitbox/CollisionShape2D
+
+var isAttacking : bool = false
+var isAttacked : bool = false
+var combo = 0
+
+func _ready() -> void:
+	Global.playerBody = self
+
+func _physics_process(delta: float) -> void:
+	# print("FPS: ", Engine.get_frames_per_second())
+	
+	if Input.is_action_just_pressed("attack") and is_on_floor() and not isAttacking:
+		if combo == 0:
+			anim.play("basic1")
+			isAttacking = true
+			hitbox.disabled = false
+			combo = 1
+			
+		elif combo == 1:
+			anim.play("basic2")
+			isAttacking = true
+			hitbox.disabled = false
+			combo = 2
+	
+	_flip()
+	
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not isAttacking:
+		velocity.y = JUMP_VELOCITY
+		
+	if not is_on_floor():
+		if velocity.y < 0:
+			anim.play("jump")
+		else:
+			anim.play("fall")
+	
+	var direction := Input.get_axis("left", "right")
+	if direction and not isAttacking:
+		velocity.x = direction * SPEED
+		if is_on_floor():
+			anim.play("walk")
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		if is_on_floor() and not isAttacking: anim.play("idle")
+		
+	move_and_slide()
+
+func _flip():
+	if velocity.x != 0:
+		var facing_left = velocity.x < 0
+		anim.flip_h = facing_left
+		var hitbox_position = $Hitbox/CollisionShape2D.position
+		if facing_left:
+			hitbox_position.x = -abs(hitbox_position.x)
+		else:
+			hitbox_position.x = abs(hitbox_position.x)
+		$Hitbox/CollisionShape2D.position = hitbox_position
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if anim.animation == "basic1":
+		hitbox.disabled = true
+		isAttacking = false
+		combo = 1
+		await get_tree().create_timer(0.5).timeout
+		combo = 0
+	elif anim.animation == "basic2":
+		isAttacking = false
+		combo = 0
+		hitbox.disabled = true
