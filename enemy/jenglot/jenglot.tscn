@@ -1,8 +1,8 @@
 [gd_scene load_steps=25 format=3 uid="uid://h2o04miklxwn"]
 
-[ext_resource type="Texture2D" uid="uid://vn5ghrungdsi" path="res://enemy/jenglot.png" id="1_7ooks"]
-[ext_resource type="Script" path="res://enemy/jenglot.gd" id="1_woy41"]
-[ext_resource type="PackedScene" uid="uid://e4sddqgrpqow" path="res://enemy/jenglotP.tscn" id="2_5ww8s"]
+[ext_resource type="Texture2D" uid="uid://vn5ghrungdsi" path="res://enemy/jenglot/jenglot.png" id="1_7ooks"]
+[ext_resource type="Script" path="res://enemy/jenglot/jenglot.gd" id="1_woy41"]
+[ext_resource type="PackedScene" uid="uid://e4sddqgrpqow" path="res://enemy/jenglot/jenglotP.tscn" id="2_5ww8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_su8kf"]
 size = Vector2(17, 47)
@@ -169,19 +169,15 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_27ccx")
 animation = &"death"
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 129
+
 [node name="ChaseArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea"]
 shape = SubResource("CircleShape2D_xxp7t")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-collision_mask = 129
-
-[node name="TimerBullet" type="Timer" parent="."]
-process_callback = 0
-one_shot = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -191,11 +187,16 @@ collision_mask = 2
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_to5uu")
 
+[node name="TimerBullet" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
 [node name="TimerKnockback" type="Timer" parent="."]
 one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="ChaseArea" to="." method="_on_chase_area_area_entered"]
 [connection signal="area_exited" from="ChaseArea" to="." method="_on_chase_area_area_exited"]
-[connection signal="timeout" from="TimerBullet" to="." method="_on_timer_bullet_timeout"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="TimerBullet" to="." method="_on_timer_bullet_timeout"]
+[connection signal="timeout" from="TimerKnockback" to="." method="_on_timer_knockback_timeout"]

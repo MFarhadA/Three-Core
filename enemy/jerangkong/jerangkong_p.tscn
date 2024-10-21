@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpfsdc6obb37p"]
+
+[ext_resource type="Texture2D" uid="uid://c1f2rupyqond0" path="res://enemy/jerangkong/jerangkong.png" id="1_5ud7m"]
+[ext_resource type="Script" path="res://enemy/jerangkong/jerangkong_p.gd" id="1_w023x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj4mr"]
+atlas = ExtResource("1_5ud7m")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sy24i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj4mr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynqll"]
+size = Vector2(12, 6)
+
+[node name="JerangkongP" type="Area2D" groups=["HitboxEnemies"]]
+collision_layer = 2
+script = ExtResource("1_w023x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.4375, 1.4375)
+sprite_frames = SubResource("SpriteFrames_sy24i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ynqll")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://e4sddqgrpqow"]
 
-[ext_resource type="Script" path="res://enemy/jenglot_p.gd" id="1_dywii"]
-[ext_resource type="Texture2D" uid="uid://vn5ghrungdsi" path="res://enemy/jenglot.png" id="1_p7hxv"]
+[ext_resource type="Script" path="res://enemy/jenglot/jenglot_p.gd" id="1_dywii"]
+[ext_resource type="Texture2D" uid="uid://vn5ghrungdsi" path="res://enemy/jenglot/jenglot.png" id="1_p7hxv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjofd"]
 atlas = ExtResource("1_p7hxv")

@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction : Vector2 = Vector2.RIGHT
-var speed : float = 300
+var speed : float = 400
 @onready var anim = $AnimatedSprite2D
 @onready var collisionShape = $CollisionShape2D
 

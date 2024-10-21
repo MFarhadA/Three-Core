@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ljen7c3rwc1j"
-path="res://.godot/imported/tuyul.png-536a5394124e8dd72ce0ccc46e3b5de6.ctex"
+uid="uid://c1f2rupyqond0"
+path="res://.godot/imported/jerangkong.png-d85ea3c8c5b731f2060f8f2240d21ae6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemy/tuyul.png"
-dest_files=["res://.godot/imported/tuyul.png-536a5394124e8dd72ce0ccc46e3b5de6.ctex"]
+source_file="res://enemy/jerangkong/jerangkong.png"
+dest_files=["res://.godot/imported/jerangkong.png-d85ea3c8c5b731f2060f8f2240d21ae6.ctex"]
 
 [params]
 

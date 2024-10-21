@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://dt2oalf227cxv"]
 
-[ext_resource type="Texture2D" uid="uid://ljen7c3rwc1j" path="res://enemy/tuyul.png" id="1_734pb"]
-[ext_resource type="Script" path="res://enemy/tuyul.gd" id="1_qyw48"]
+[ext_resource type="Texture2D" uid="uid://ljen7c3rwc1j" path="res://enemy/tuyul/tuyul.png" id="1_734pb"]
+[ext_resource type="Script" path="res://enemy/tuyul/tuyul.gd" id="1_qyw48"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul3km"]
 size = Vector2(19, 27)

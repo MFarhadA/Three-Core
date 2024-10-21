@@ -32,12 +32,13 @@ func _aim():
 	raycast.target_position = to_local(player.position)
 	
 func _check_player_collission():
-	if isChase and raycast.is_colliding() and raycast.get_collider() == player:
-		if timeBullet.is_stopped():
-			timeBullet.start(3)
-	else:
-		if not isChase:
-			timeBullet.stop()
+	if not Dead:
+		if isChase and raycast.is_colliding() and raycast.get_collider() == player:
+			if timeBullet.is_stopped():
+				timeBullet.start(3)
+		else:
+			if not isChase:
+				timeBullet.stop()
 
 func _on_timer_bullet_timeout() -> void:
 	isAttacking = true
@@ -61,14 +62,13 @@ func _on_chase_area_area_exited(area: Area2D) -> void:
 		
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HitboxPlayer"):
-		print("Hit detected!", health)
 		health -= 1
 		_knockback()
 
 func _knockback():
 	var knockback = position.direction_to(player.position) * -1
-	velocity = Vector2(200 * knockback.x, -200)
-	timeKnockback.start(0.1)
+	velocity = Vector2(100 * knockback.x, -100)
+	timeKnockback.start(0.5)
 func _on_timer_knockback_timeout() -> void:
 	velocity = Vector2.ZERO
 
@@ -83,5 +83,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		_shoot()
 	elif anim.animation == "cast1":
 		isAttacking = false
-	elif anim.animation == "death":
+	if anim.animation == "death":
 		queue_free()

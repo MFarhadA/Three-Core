@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1f2rupyqond0"
-path="res://.godot/imported/jerangkong.png-09611fc5d24f438d12352b6df386159a.ctex"
+uid="uid://bil1rwpa258vo"
+path="res://.godot/imported/pocong.png-80e1d21c0cae340aadc87132d37d7890.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemy/jerangkong.png"
-dest_files=["res://.godot/imported/jerangkong.png-09611fc5d24f438d12352b6df386159a.ctex"]
+source_file="res://enemy/pocong/pocong.png"
+dest_files=["res://.godot/imported/pocong.png-80e1d21c0cae340aadc87132d37d7890.ctex"]
 
 [params]
 

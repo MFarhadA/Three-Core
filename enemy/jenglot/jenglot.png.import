@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bil1rwpa258vo"
-path="res://.godot/imported/pocong.png-fb2ececbf746e8cec8590811d6ed603e.ctex"
+uid="uid://vn5ghrungdsi"
+path="res://.godot/imported/jenglot.png-9db707b03b512799c2d77384252b4020.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemy/pocong.png"
-dest_files=["res://.godot/imported/pocong.png-fb2ececbf746e8cec8590811d6ed603e.ctex"]
+source_file="res://enemy/jenglot/jenglot.png"
+dest_files=["res://.godot/imported/jenglot.png-9db707b03b512799c2d77384252b4020.ctex"]
 
 [params]
 

@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=4 uid="uid://c66uv5m1r7sme"]
+[gd_scene load_steps=13 format=4 uid="uid://c66uv5m1r7sme"]
 
 [ext_resource type="Texture2D" uid="uid://ceqnxr02jsdr0" path="res://tileset/tileset.png" id="1_sk8ic"]
 [ext_resource type="PackedScene" uid="uid://et4mwi4b2l3w" path="res://player/player.tscn" id="2_0cb5q"]
 [ext_resource type="PackedScene" uid="uid://cbv0v1o853rl3" path="res://tileset/ParallaxBG.tscn" id="3_uwot0"]
 [ext_resource type="Script" path="res://tile_map_layer.gd" id="4_2jkq3"]
-[ext_resource type="PackedScene" uid="uid://dt2oalf227cxv" path="res://enemy/tuyul.tscn" id="4_h3m3u"]
-[ext_resource type="PackedScene" uid="uid://cwbecnnhacgeu" path="res://enemy/kuyang.tscn" id="5_ydgnt"]
-[ext_resource type="PackedScene" uid="uid://h2o04miklxwn" path="res://enemy/jenglot.tscn" id="6_wvjmu"]
+[ext_resource type="PackedScene" uid="uid://dt2oalf227cxv" path="res://enemy/tuyul/tuyul.tscn" id="4_h3m3u"]
+[ext_resource type="PackedScene" uid="uid://cwbecnnhacgeu" path="res://enemy/kuyang/kuyang.tscn" id="5_ydgnt"]
+[ext_resource type="PackedScene" uid="uid://h2o04miklxwn" path="res://enemy/jenglot/jenglot.tscn" id="6_wvjmu"]
+[ext_resource type="PackedScene" uid="uid://cw06xc0nm80xg" path="res://enemy/jerangkong/jerangkong.tscn" id="8_ebd7j"]
+[ext_resource type="Script" path="res://fps.gd" id="9_6dhka"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r7so4"]
 texture = ExtResource("1_sk8ic")
@@ -215,6 +217,9 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_r7so4")
 
+[sub_resource type="LabelSettings" id="LabelSettings_lt4xf"]
+font_size = 25
+
 [node name="TestMap" type="Node2D"]
 
 [node name="ParallaxBG" parent="." instance=ExtResource("3_uwot0")]
@@ -246,3 +251,17 @@ position = Vector2(864, 374)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("6_wvjmu")]
 position = Vector2(509, 517)
+
+[node name="jerangkong" parent="." instance=ExtResource("8_ebd7j")]
+position = Vector2(454, 517)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 21.0
+offset_top = 666.0
+offset_right = 227.0
+offset_bottom = 701.0
+text = "FPS : "
+label_settings = SubResource("LabelSettings_lt4xf")
+script = ExtResource("9_6dhka")

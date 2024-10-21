@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://cwbecnnhacgeu"]
 
-[ext_resource type="Texture2D" uid="uid://dcumnvua3dvw5" path="res://enemy/kuyang.png" id="1_q1de2"]
-[ext_resource type="Script" path="res://enemy/kuyang.gd" id="1_r50oh"]
+[ext_resource type="Texture2D" uid="uid://dcumnvua3dvw5" path="res://enemy/kuyang/kuyang.png" id="1_q1de2"]
+[ext_resource type="Script" path="res://enemy/kuyang/kuyang.gd" id="1_r50oh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvm3f"]
 atlas = ExtResource("1_q1de2")
