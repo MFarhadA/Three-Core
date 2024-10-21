@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cwbecnnhacgeu"]
+[gd_scene load_steps=23 format=3 uid="uid://cwbecnnhacgeu"]
 
 [ext_resource type="Texture2D" uid="uid://dcumnvua3dvw5" path="res://enemy/kuyang.png" id="1_q1de2"]
 [ext_resource type="Script" path="res://enemy/kuyang.gd" id="1_r50oh"]
@@ -126,16 +126,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwe0o"]
-size = Vector2(27, 50)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkopl"]
+radius = 10.5
+height = 46.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wi5gm"]
-radius = 145.014
+radius = 235.306
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5u6a"]
 size = Vector2(27, 50)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nood"]
+size = Vector2(27, 50)
+
 [node name="kuyang" type="CharacterBody2D"]
+collision_layer = 64
 script = ExtResource("1_r50oh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -144,8 +149,11 @@ animation = &"chase"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -1)
-shape = SubResource("RectangleShape2D_dwe0o")
+position = Vector2(0.5, -3)
+shape = SubResource("CapsuleShape2D_fkopl")
+
+[node name="TimerKnockback" type="Timer" parent="."]
+one_shot = true
 
 [node name="TimerRoam" type="Timer" parent="."]
 autostart = true
@@ -169,8 +177,17 @@ visibility_layer = 2
 position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_i5u6a")
 
+[node name="Hitbox" type="Area2D" parent="." groups=["HitboxEnemies"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_7nood")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="TimerKnockback" to="." method="_on_timer_knockback_timeout"]
 [connection signal="timeout" from="TimerRoam" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="ChaseArea" to="." method="_on_chase_area_area_entered"]
 [connection signal="area_exited" from="ChaseArea" to="." method="_on_chase_area_area_exited"]
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

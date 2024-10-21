@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://et4mwi4b2l3w"]
+[gd_scene load_steps=39 format=3 uid="uid://et4mwi4b2l3w"]
 
 [ext_resource type="Texture2D" uid="uid://1qcieda2t8ve" path="res://player/player.png" id="1_72phs"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_uk7lu"]
@@ -46,6 +46,38 @@ region = Rect2(192, 448, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2alpn"]
 atlas = ExtResource("1_72phs")
 region = Rect2(256, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5id34"]
+atlas = ExtResource("1_72phs")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eeykp"]
+atlas = ExtResource("1_72phs")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afj8t"]
+atlas = ExtResource("1_72phs")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sc86"]
+atlas = ExtResource("1_72phs")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wopcm"]
+atlas = ExtResource("1_72phs")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rn38"]
+atlas = ExtResource("1_72phs")
+region = Rect2(320, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvtwe"]
+atlas = ExtResource("1_72phs")
+region = Rect2(384, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w27ai"]
+atlas = ExtResource("1_72phs")
+region = Rect2(448, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hjm7"]
 atlas = ExtResource("1_72phs")
@@ -146,6 +178,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5id34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eeykp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afj8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sc86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wopcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rn38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvtwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w27ai")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2hjm7")
 }],
 "loop": true,
@@ -208,12 +269,13 @@ animations = [{
 size = Vector2(24, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84wh2"]
-size = Vector2(50, 48)
+size = Vector2(43, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8yoh"]
 size = Vector2(24, 48)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 128
 script = ExtResource("1_uk7lu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -223,6 +285,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 0
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_ubnid")
 
@@ -236,11 +299,11 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(13, 1)
+position = Vector2(9.5, -0.5)
 shape = SubResource("RectangleShape2D_84wh2")
 disabled = true
 
-[node name="Hurtbox" type="Area2D" parent="." groups=["HitboxPlayer", "HurtboxPlayer"]]
+[node name="Hurtbox" type="Area2D" parent="." groups=["HurtboxPlayer"]]
 collision_layer = 2
 collision_mask = 2
 
@@ -250,4 +313,12 @@ visibility_layer = 2
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_n8yoh")
 
+[node name="TimerInvisible" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerAttacked" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="TimerInvisible" to="." method="_on_timer_invisible_timeout"]
+[connection signal="timeout" from="TimerAttacked" to="." method="_on_timer_attacked_timeout"]

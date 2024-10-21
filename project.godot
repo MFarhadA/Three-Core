@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Three Core"
+run/main_scene="res://test_map.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
@@ -24,6 +25,12 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
+
+[global_group]
+
+HurtboxPlayer=""
+HitboxPlayer=""
+HitboxEnemies=""
 
 [input]
 
@@ -52,6 +59,9 @@ attack={
 
 2d_render/layer_2="Hit & Hurt Box"
 2d_physics/layer_1="World"
+2d_physics/layer_2="Hurt & Hit box"
+2d_physics/layer_7="Enemies"
+2d_physics/layer_8="Player"
 
 [rendering]
 
