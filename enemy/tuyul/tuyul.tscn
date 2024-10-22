@@ -6,12 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul3km"]
 size = Vector2(19, 27)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tf66p"]
-size = Vector2(21, 27)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rd7j2"]
-size = Vector2(21, 27)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jj8to"]
 atlas = ExtResource("1_734pb")
 region = Rect2(0, 64, 64, 64)
@@ -135,8 +129,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tf66p"]
+size = Vector2(21, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rd7j2"]
+size = Vector2(21, 27)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_okqem"]
-radius = 231.262
+radius = 253.049
 
 [node name="tuyul" type="CharacterBody2D"]
 collision_layer = 64
@@ -150,6 +150,14 @@ shape = SubResource("RectangleShape2D_ul3km")
 
 [node name="TimerKnockback" type="Timer" parent="."]
 one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_wjmmg")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="Hitbox" type="Area2D" parent="." groups=["HitboxEnemies"]]
 position = Vector2(0.5, 0.5)
@@ -169,14 +177,6 @@ light_mask = 2
 visibility_layer = 2
 shape = SubResource("RectangleShape2D_rd7j2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-light_mask = 2
-visibility_layer = 2
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_wjmmg")
-animation = &"idle"
-autoplay = "idle"
-
 [node name="ChaseArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
@@ -184,7 +184,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea"]
 shape = SubResource("CircleShape2D_okqem")
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="ChaseArea" to="." method="_on_chase_area_area_entered"]
 [connection signal="area_exited" from="ChaseArea" to="." method="_on_chase_area_area_exited"]

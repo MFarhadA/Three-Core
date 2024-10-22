@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-var health = 1
 const SPEED = 300.0
 
 @onready var anim = $AnimatedSprite2D
@@ -18,7 +17,6 @@ func _ready():
 	player = Global.playerBody
 
 func _process(delta):
-	print(is_on_floor())
 	if not Dead:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -26,7 +24,6 @@ func _process(delta):
 			anim.play("idle")
 		_aim()
 		_check_player_collission()
-		_death()
 	move_and_slide()
 
 func _aim():
@@ -46,13 +43,14 @@ func _on_timer_bullet_timeout() -> void:
 	anim.play("cast")
 	
 func _shoot():
-	var bullet = ammo.instantiate()
-	bullet.position = position
-	var direction_vector = (raycast.target_position).normalized()
-	bullet.direction = direction_vector
-	bullet.rotation = direction_vector.angle()
-	get_tree().current_scene.add_child(bullet)
-	anim.play("cast1")
+	if not Dead:
+		var bullet = ammo.instantiate()
+		bullet.position = position
+		var direction_vector = (raycast.target_position).normalized()
+		bullet.direction = direction_vector
+		bullet.rotation = direction_vector.angle()
+		get_tree().current_scene.add_child(bullet)
+		anim.play("cast1")
 
 func _on_chase_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HurtboxPlayer"):
@@ -63,7 +61,9 @@ func _on_chase_area_area_exited(area: Area2D) -> void:
 		
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HitboxPlayer"):
-		health -= 1
+		timeBullet.stop()
+		anim.play("death")
+		Dead = true
 		_knockback()
 
 func _knockback():
@@ -72,12 +72,6 @@ func _knockback():
 	timeKnockback.start(0.5)
 func _on_timer_knockback_timeout() -> void:
 	velocity = Vector2.ZERO
-
-func _death():
-	if health == 0:
-		Dead = true
-		isChase = false
-		anim.play("death")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "cast":

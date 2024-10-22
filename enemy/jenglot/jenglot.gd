@@ -18,6 +18,8 @@ func _ready():
 	player = Global.playerBody
 
 func _process(delta):
+	if Dead:
+		anim.play("Dead")
 	if not Dead:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
