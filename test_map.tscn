@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://c66uv5m1r7sme"]
+[gd_scene load_steps=14 format=4 uid="uid://c66uv5m1r7sme"]
 
 [ext_resource type="Script" path="res://test_map.gd" id="1_8jlhs"]
 [ext_resource type="Texture2D" uid="uid://ceqnxr02jsdr0" path="res://tileset/tileset.png" id="1_sk8ic"]
@@ -11,9 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cw06xc0nm80xg" path="res://enemy/jerangkong/jerangkong.tscn" id="8_ebd7j"]
 [ext_resource type="PackedScene" uid="uid://cc3khxnapw1es" path="res://enemy/pocong/pocong.tscn" id="10_ybe5j"]
 [ext_resource type="PackedScene" uid="uid://pkis2eg4jocv" path="res://menu/black_transisiton.tscn" id="12_4djfp"]
-
-[sub_resource type="Resource" id="Resource_i0r5o"]
-metadata/__load_path__ = "res://menu/main_screen.tscn"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r7so4"]
 texture = ExtResource("1_sk8ic")
@@ -224,7 +221,6 @@ sources/0 = SubResource("TileSetAtlasSource_r7so4")
 
 [node name="TestMap" type="Node2D"]
 script = ExtResource("1_8jlhs")
-main_screen = SubResource("Resource_i0r5o")
 
 [node name="ParallaxBG" parent="." instance=ExtResource("3_uwot0")]
 
@@ -263,6 +259,5 @@ position = Vector2(608, 514)
 position = Vector2(948, 378)
 
 [node name="black_transisition" parent="." instance=ExtResource("12_4djfp")]
-autoplay = "start_transisition"
 
 [connection signal="animation_finished" from="black_transisition" to="." method="_on_black_transisition_animation_finished"]

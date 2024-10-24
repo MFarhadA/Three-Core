@@ -92,18 +92,19 @@ _data = {
 libraries = {
 "": SubResource("AnimationLibrary_55lq3")
 }
+autoplay = "start_transisition"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 top_level = true
 z_index = 100
-offset_top = -458.0
 offset_right = 1285.0
-offset_bottom = -3.0
+offset_bottom = 455.0
 color = Color(0, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 top_level = true
 z_index = 100
+offset_top = 265.0
 offset_right = 1285.0
-offset_bottom = 455.0
+offset_bottom = 720.0
 color = Color(0, 0, 0, 1)

@@ -83,7 +83,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		combo = 0
 		hitbox.disabled = true
 	if anim.animation == "death":
-		queue_free()
+		_game_over()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if not hurtbox.disabled and area.is_in_group("HitboxEnemies"):
@@ -94,11 +94,13 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			Dead = true
 			anim.play("death")
 
+func _game_over():
+	pass
+
 func _invisible():
 	hurtbox.disabled = true
 	anim.modulate = Color(1, 1, 1, 0.2)
 	timeInvisible.start(1)
-
 func _on_timer_invisible_timeout() -> void:
 	hurtbox.disabled = false
 	anim.modulate = Color(1, 1, 1, 1)
