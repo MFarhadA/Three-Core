@@ -82,8 +82,13 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		isAttacking = false
 		combo = 0
 		hitbox.disabled = true
+<<<<<<< Updated upstream
 	elif anim.animation == "death":
 		queue_free()
+=======
+	if anim.animation == "death":
+		_gameOver()
+>>>>>>> Stashed changes
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HitboxEnemies"):
@@ -93,6 +98,14 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		else:
 			Dead = true
 			anim.play("death")
+<<<<<<< Updated upstream
+=======
+	
+func _gameOver():
+	transition.play("quit_transisition")
+	await transition.animation_finished
+	SceneManager.go_to_main_menu()
+>>>>>>> Stashed changes
 
 func _invisible():
 	hurtbox.disabled = true

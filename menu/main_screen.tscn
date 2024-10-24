@@ -1,0 +1,170 @@
+[gd_scene load_steps=13 format=3 uid="uid://cex5iog2mfolq"]
+
+[ext_resource type="Script" path="res://menu/main_screen.gd" id="1_il1qp"]
+[ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="1_loyem"]
+[ext_resource type="Texture2D" uid="uid://bffo1ocm763g5" path="res://logo/kuroko_w.png" id="2_mti2u"]
+[ext_resource type="Texture2D" uid="uid://cg7hau20aisek" path="res://logo/full_icon.png" id="3_7brfy"]
+[ext_resource type="PackedScene" uid="uid://3y8rcb2y8k74" path="res://menu/main_menu.tscn" id="3_rpt8d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uy74k"]
+font_size = 54
+
+[sub_resource type="Animation" id="Animation_kson0"]
+resource_name = "tc_animation"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect/FullIcon/Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_083l2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect/FullIcon/Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3lbrp"]
+_data = {
+"RESET": SubResource("Animation_083l2"),
+"tc_animation": SubResource("Animation_kson0")
+}
+
+[sub_resource type="Animation" id="Animation_mdkp1"]
+resource_name = "kuroko_anim"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2/KurokoW/ColorRect3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-5909.32, -1178), Vector2(-1957.5, -1178)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4mt7a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2/KurokoW/ColorRect3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-5909.32, -1178)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xt6q1"]
+_data = {
+"RESET": SubResource("Animation_4mt7a"),
+"kuroko_anim": SubResource("Animation_mdkp1")
+}
+
+[node name="main_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_loyem")
+script = ExtResource("1_il1qp")
+main_menu = ExtResource("3_rpt8d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1290.0
+offset_bottom = 724.0
+color = Color(0, 0, 0, 1)
+
+[node name="FullIcon" type="Sprite2D" parent="ColorRect"]
+position = Vector2(640, 312)
+scale = Vector2(0.372222, 0.372222)
+texture = ExtResource("3_7brfy")
+
+[node name="Label" type="Label" parent="ColorRect/FullIcon"]
+offset_left = -580.298
+offset_top = 945.672
+offset_right = 570.702
+offset_bottom = 1000.67
+theme = ExtResource("1_loyem")
+text = "[ TEKAN TOMBOL APAPUN UNTUK LANJUT ]"
+label_settings = SubResource("LabelSettings_uy74k")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1290.0
+offset_bottom = 724.0
+color = Color(0, 0, 0, 1)
+
+[node name="KurokoW" type="Sprite2D" parent="ColorRect2"]
+position = Vector2(638, 384)
+scale = Vector2(0.325926, 0.325926)
+texture = ExtResource("2_mti2u")
+
+[node name="ColorRect3" type="ColorRect" parent="ColorRect2/KurokoW"]
+offset_left = -5909.32
+offset_top = -1178.0
+offset_right = -1957.32
+offset_bottom = 1056.0
+color = Color(0, 0, 0, 1)
+
+[node name="TCAnim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../KurokoAnim")
+libraries = {
+"": SubResource("AnimationLibrary_3lbrp")
+}
+
+[node name="KurokoAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xt6q1")
+}
+autoplay = "kuroko_anim"
