@@ -31,7 +31,8 @@ func _process(delta):
 	move_and_slide()
 
 func _aim():
-	raycast.target_position = to_local(player.position)
+	if player != null and not Dead:
+		raycast.target_position = to_local(player.position)
 	
 func _check_player_collission():
 	if not Dead:

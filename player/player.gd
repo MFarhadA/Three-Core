@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 2
+var health = 1
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -400.0
 @onready var hitbox = $Hitbox/CollisionShape2D
 @onready var hurtbox = $Hurtbox/CollisionShape2D
 @onready var timeInvisible = $TimerInvisible
+@onready var transition = $black_transisition
 
 var isAttacking : bool = false
 var isAttacked : bool = false
@@ -19,7 +20,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	#print("FPS: ", Engine.get_frames_per_second())
-	
 	if Input.is_action_just_pressed("attack") and is_on_floor() and not isAttacking and not Dead:
 		if combo == 0:
 			anim.play("basic1")
@@ -82,30 +82,22 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		isAttacking = false
 		combo = 0
 		hitbox.disabled = true
-<<<<<<< Updated upstream
-	elif anim.animation == "death":
-		queue_free()
-=======
 	if anim.animation == "death":
 		_gameOver()
->>>>>>> Stashed changes
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("HitboxEnemies"):
+	if not hurtbox.disabled and area.is_in_group("HitboxEnemies"):
 		health -= 1
 		if health > 0:
 			_invisible()
 		else:
 			Dead = true
 			anim.play("death")
-<<<<<<< Updated upstream
-=======
 	
 func _gameOver():
 	transition.play("quit_transisition")
 	await transition.animation_finished
 	SceneManager.go_to_main_menu()
->>>>>>> Stashed changes
 
 func _invisible():
 	hurtbox.disabled = true
