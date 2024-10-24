@@ -1,0 +1,110 @@
+[gd_scene load_steps=5 format=3 uid="uid://pkis2eg4jocv"]
+
+[sub_resource type="Animation" id="Animation_lqxhx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("black_transisition/ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("black_transisition/ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -458)]
+}
+
+[sub_resource type="Animation" id="Animation_gk1fh"]
+resource_name = "quit_transisition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("black_transisition/ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -458), Vector2(0, -71), Vector2(0, -71)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("black_transisition/ColorRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 720), Vector2(0, 384), Vector2(0, 384)]
+}
+
+[sub_resource type="Animation" id="Animation_csed2"]
+resource_name = "start_transisition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("black_transisition/ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -458), Vector2(0, -458)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("black_transisition/ColorRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 265), Vector2(0, 720), Vector2(0, 720)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_55lq3"]
+_data = {
+"RESET": SubResource("Animation_lqxhx"),
+"quit_transisition": SubResource("Animation_gk1fh"),
+"start_transisition": SubResource("Animation_csed2")
+}
+
+[node name="black_transisition" type="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_55lq3")
+}
+autoplay = "start_transisition"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+top_level = true
+z_index = 100
+offset_right = 1285.0
+offset_bottom = 455.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+top_level = true
+z_index = 100
+offset_top = 265.0
+offset_right = 1285.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)

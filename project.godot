@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Three Core"
-run/main_scene="res://test_map.tscn"
+config/version="0.1"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/show_image=false
+config/icon="res://logo/icon.png"
 
 [autoload]
 

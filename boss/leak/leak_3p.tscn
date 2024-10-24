@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://dlal0ot03b0nh"]
+
+[ext_resource type="Script" path="res://boss/leak/leak_3p.gd" id="1_k6hei"]
+[ext_resource type="Texture2D" uid="uid://dpbe1vashe2v6" path="res://boss/leak/leak.png" id="2_bk4wn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfqxs"]
+atlas = ExtResource("2_bk4wn")
+region = Rect2(0, 1536, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2p2m"]
+atlas = ExtResource("2_bk4wn")
+region = Rect2(256, 1536, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1d34"]
+atlas = ExtResource("2_bk4wn")
+region = Rect2(512, 1536, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1egld"]
+atlas = ExtResource("2_bk4wn")
+region = Rect2(768, 1536, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7qoay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfqxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2p2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1d34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1egld")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_esoun"]
+radius = 28.0
+height = 114.0
+
+[node name="leak_3p" type="Area2D" groups=["HitboxEnemies"]]
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_k6hei")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4.23438, 4.23438)
+sprite_frames = SubResource("SpriteFrames_7qoay")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -38)
+shape = SubResource("CapsuleShape2D_esoun")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(0, -14)
+scale = Vector2(2.9, 4.2)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
