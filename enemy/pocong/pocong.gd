@@ -28,7 +28,6 @@ func _flip():
 		anim.flip_h = facing_right
 
 func move(delta):
-	print(isJump)
 	if not Dead:
 		if is_on_floor():
 			if isChase and not isAttacked and not isJump:
