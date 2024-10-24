@@ -1,0 +1,203 @@
+[gd_scene load_steps=12 format=3 uid="uid://bq0m7ws5liu6d"]
+
+[ext_resource type="Texture2D" uid="uid://bffo1ocm763g5" path="res://logo/kuroko_w.png" id="1_ml4tn"]
+[ext_resource type="Script" path="res://menu/main_screen.gd" id="1_wgdtp"]
+[ext_resource type="Texture2D" uid="uid://cg7hau20aisek" path="res://logo/full_icon.png" id="2_7me7c"]
+[ext_resource type="PackedScene" uid="uid://c8vm0o1eujeas" path="res://menu/mainMenu.tscn" id="2_ievvl"]
+[ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="3_2j5nn"]
+
+[sub_resource type="Theme" id="Theme_gai54"]
+
+[sub_resource type="Animation" id="Animation_b0fai"]
+resource_name = "splashLogo"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-840, -64), Vector2(-840, -64), Vector2(-464, -64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KurokoW:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7rar7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-840, -64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KurokoW:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FullIcon:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1waf4"]
+resource_name = "tombolAnim"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FullIcon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iac80"]
+_data = {
+"RESET": SubResource("Animation_7rar7"),
+"splashLogo": SubResource("Animation_b0fai"),
+"tombolAnim": SubResource("Animation_1waf4")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_5u4w3"]
+font_size = 24
+
+[node name="splashScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_gai54")
+script = ExtResource("1_wgdtp")
+main_menu = ExtResource("2_ievvl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = -72.0
+offset_right = 1296.0
+offset_bottom = 672.0
+color = Color(0, 0, 0, 1)
+
+[node name="KurokoW" type="Sprite2D" parent="."]
+position = Vector2(632, 328)
+scale = Vector2(0.311111, 0.311111)
+texture = ExtResource("1_ml4tn")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = -840.0
+offset_top = -64.0
+offset_right = 448.0
+offset_bottom = 696.0
+color = Color(0, 0, 0, 1)
+
+[node name="splashAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iac80")
+}
+
+[node name="FullIcon" type="Sprite2D" parent="."]
+position = Vector2(640, 232)
+scale = Vector2(0.333333, 0.333333)
+texture = ExtResource("2_7me7c")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 424.0
+offset_right = 937.0
+offset_bottom = 450.0
+theme = ExtResource("3_2j5nn")
+text = "[ TEKAN TOMBOL APAPUN UNTUK MELANJUTKAN }"
+label_settings = SubResource("LabelSettings_5u4w3")

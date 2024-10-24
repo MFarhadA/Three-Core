@@ -77,6 +77,11 @@ func _skill3p():
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HitboxPlayer"):
+		var tween = create_tween()
+		var start_color = Color(1, 1, 1)
+		var end_color = Color(1, 0, 0)
+		tween.tween_property(self, "modulate", end_color, 0.05)
+		tween.tween_property(self, "modulate", start_color, 0.05).set_delay(0.05)
 		health -= 1
 
 func _death():

@@ -3,7 +3,7 @@ extends Node
 var main_menu_scene : PackedScene
 
 func _ready():
-	main_menu_scene = preload("res://menu/main_screen.tscn")
+	main_menu_scene = preload("res://menu/splashScreen.tscn")
 
 func go_to_main_menu():
 	if main_menu_scene != null:

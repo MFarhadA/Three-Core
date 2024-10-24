@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://dxrxg05aailc0"]
+[gd_scene load_steps=9 format=4 uid="uid://dxrxg05aailc0"]
 
 [ext_resource type="Script" path="res://map/test_map.gd" id="1_n82cu"]
 [ext_resource type="Texture2D" uid="uid://ceqnxr02jsdr0" path="res://tileset/tileset.png" id="1_ncviw"]
 [ext_resource type="PackedScene" uid="uid://c7pikon8fqtc2" path="res://boss/leak/leak.tscn" id="2_uipse"]
 [ext_resource type="Texture2D" uid="uid://cflke67173c85" path="res://tileset/parallax.jpg" id="3_j14kr"]
 [ext_resource type="PackedScene" uid="uid://et4mwi4b2l3w" path="res://player/player.tscn" id="4_swt3f"]
+[ext_resource type="PackedScene" uid="uid://cw06xc0nm80xg" path="res://enemy/jerangkong/jerangkong.tscn" id="6_mpb3i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlv4c"]
 texture = ExtResource("1_ncviw")
@@ -239,3 +240,15 @@ zoom = Vector2(0.85, 0.85)
 
 [node name="Player" parent="." instance=ExtResource("4_swt3f")]
 position = Vector2(328, 592)
+
+[node name="jerangkong" parent="." instance=ExtResource("6_mpb3i")]
+position = Vector2(440, 592)
+
+[node name="jerangkong2" parent="." instance=ExtResource("6_mpb3i")]
+position = Vector2(512, 592)
+
+[node name="jerangkong3" parent="." instance=ExtResource("6_mpb3i")]
+position = Vector2(600, 592)
+
+[node name="jerangkong4" parent="." instance=ExtResource("6_mpb3i")]
+position = Vector2(688, 592)
