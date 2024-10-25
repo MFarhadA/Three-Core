@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 1
+var health = 2
 
 const SPEED = 150.0
 const dashSPEED = 1000.0
@@ -47,11 +47,13 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("attack"):
 			if combo == 0:
 				anim.play("basic1")
+				$SFX/Basic1.play()
 				isAttacking = true
 				hitbox.disabled = false
 				combo = 1
 			elif combo == 1:
 				anim.play("basic2")
+				$SFX/Basic2.play()
 				isAttacking = true
 				hitbox.disabled = false
 				combo = 2
@@ -64,12 +66,14 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("skill2") and not isskill2cd:
 			skill2cd.start(30)
 			anim.play("skill2")
+			$SFX/Skill2.play()
 			isskill2cd = true
 			isAttacking = true
 			_skill2()
 		if Input.is_action_just_pressed("skill3") and not isskill3cd:
 			skill3cd.start(120)
 			anim.play("skill3")
+			$SFX/Heal.play()
 			isskill3cd = true
 			isAttacking = true
 			_skill3()
@@ -112,6 +116,7 @@ func _dash():
 	timeDash.start(0.1)
 	timeDashCD.start(1)
 	timeDashing.start(0.5)
+	$SFX/Dash.play()
 	isDashing = true
 	hurtbox.disabled = true
 	isDashCD = true
@@ -143,6 +148,7 @@ func _flip():
 
 func _skill1():
 	var projectile1 = skill1p.instantiate()
+	GlobalAudio._shoot()
 	projectile1.position = position
 	if anim.flip_h :
 		projectile1.direction = Vector2.LEFT
@@ -170,7 +176,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		isAttacking = false
 		combo = 0
 		hitbox.disabled = true
-	if anim.animation == "skill1" or anim.animation == "skill2" or anim.animation == "skill3":
+	if anim.animation == "skill1" or anim.animation == "skill2":
+		isAttacking = false
+	if anim.animation == "skill3":
 		isAttacking = false
 	if anim.animation == "death":
 		_gameOver()
@@ -179,9 +187,12 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if not hurtbox.disabled and area.is_in_group("HitboxEnemies"):
 		health -= 1
 		if health > 0:
+			GlobalAudio.hurt.play()
 			_invisible()
 		else:
 			Dead = true
+			hurtbox.disabled = true
+			GlobalAudio._death()
 			anim.play("death")
 
 func _gameOver():
@@ -198,14 +209,11 @@ func _on_timer_invisible_timeout() -> void:
 	hurtbox.disabled = false
 	anim.modulate = Color(1, 1, 1, 1)
 
-
 func _on_timer_skill_1cd_timeout() -> void:
 	isskill1cd = false
 
-
 func _on_timer_skill_2cd_timeout() -> void:
 	isskill2cd = false
-
 
 func _on_timer_skill_3cd_timeout() -> void:
 	isskill3cd = false

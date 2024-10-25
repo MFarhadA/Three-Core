@@ -49,6 +49,7 @@ func choose(array):
 #Hit&Hurt
 func _on_chase_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HurtboxPlayer"):
+		$SFX/Chase.play()
 		isChase = true
 func _on_chase_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("HurtboxPlayer"):
@@ -58,6 +59,10 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HitboxPlayer"):
 		health -= 1
 		isAttacked = true
+		if health > 0:
+			GlobalAudio._hurt()
+		else:
+			GlobalAudio._enemyDeath()
 		_knockback()
 
 #knockback

@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://cw06xc0nm80xg"]
+[gd_scene load_steps=31 format=3 uid="uid://cw06xc0nm80xg"]
 
 [ext_resource type="Script" path="res://enemy/jerangkong/jerangkong.gd" id="1_4mddn"]
 [ext_resource type="Texture2D" uid="uid://c1f2rupyqond0" path="res://enemy/jerangkong/jerangkong.png" id="1_u0258"]
 [ext_resource type="PackedScene" uid="uid://bpfsdc6obb37p" path="res://enemy/jerangkong/jerangkong_p.tscn" id="2_ico0g"]
+[ext_resource type="AudioStream" uid="uid://byo5hnj7lspid" path="res://audio/sfx/dash.mp3" id="4_i4vx2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmwne"]
 size = Vector2(20, 48)
@@ -227,6 +228,13 @@ one_shot = true
 
 [node name="TimerKnockback" type="Timer" parent="."]
 one_shot = true
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="cast" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_i4vx2")
+pitch_scale = 3.08
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://et4mwi4b2l3w"]
+[gd_scene load_steps=73 format=3 uid="uid://et4mwi4b2l3w"]
 
 [ext_resource type="Texture2D" uid="uid://1qcieda2t8ve" path="res://player/player.png" id="1_72phs"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_uk7lu"]
@@ -8,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://pkis2eg4jocv" path="res://menu/black_transisiton.tscn" id="4_5fcs6"]
 [ext_resource type="Script" path="res://user_interface/ui.gd" id="5_lxjxr"]
 [ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="6_vdy0p"]
+[ext_resource type="AudioStream" uid="uid://byo5hnj7lspid" path="res://audio/sfx/dash.mp3" id="9_1f6y0"]
+[ext_resource type="AudioStream" uid="uid://bx2wkffgjm1h7" path="res://audio/sfx/heal.mp3" id="9_4kwxa"]
+[ext_resource type="AudioStream" uid="uid://d050c8aw6uwkc" path="res://audio/sfx/deathEnemy.mp3" id="9_7kft1"]
+[ext_resource type="AudioStream" uid="uid://ioh72cugpnn0" path="res://audio/sfx/basic.mp3" id="9_cxnif"]
+[ext_resource type="AudioStream" uid="uid://dtw3odeu4aqpr" path="res://audio/sfx/click.mp3" id="10_mfoa1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqpk4"]
 atlas = ExtResource("1_72phs")
@@ -368,7 +373,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"skill1",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -397,7 +402,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"skill2",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -426,7 +431,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"skill3",
-"speed": 8.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -449,7 +454,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubnid"]
@@ -470,8 +475,10 @@ ghost_node = ExtResource("2_x2nxy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_cekcg")
-animation = &"skill3"
+animation = &"skill1"
 autoplay = "idle"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visibility_layer = 0
@@ -551,6 +558,34 @@ theme = ExtResource("6_vdy0p")
 text = "HEALTH"
 
 [node name="black_transisition" parent="." instance=ExtResource("4_5fcs6")]
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Basic1" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_7kft1")
+pitch_scale = 2.04
+bus = &"SFX"
+
+[node name="Skill2" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("10_mfoa1")
+pitch_scale = 0.46
+bus = &"SFX"
+
+[node name="Basic2" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_cxnif")
+pitch_scale = 3.27
+bus = &"SFX"
+
+[node name="Dash" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_1f6y0")
+volume_db = -7.496
+pitch_scale = 4.0
+bus = &"SFX"
+
+[node name="Heal" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_4kwxa")
+pitch_scale = 0.33
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

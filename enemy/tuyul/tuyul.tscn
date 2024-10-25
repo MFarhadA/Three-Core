@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://dt2oalf227cxv"]
+[gd_scene load_steps=24 format=3 uid="uid://dt2oalf227cxv"]
 
 [ext_resource type="Texture2D" uid="uid://ljen7c3rwc1j" path="res://enemy/tuyul/tuyul.png" id="1_734pb"]
 [ext_resource type="Script" path="res://enemy/tuyul/tuyul.gd" id="1_qyw48"]
+[ext_resource type="AudioStream" uid="uid://lsvcyhcy6b4" path="res://audio/sfx/chase.mp3" id="3_rd27m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ul3km"]
 size = Vector2(19, 27)
@@ -183,6 +184,11 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea"]
 shape = SubResource("CircleShape2D_okqem")
+
+[node name="Chase" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rd27m")
+pitch_scale = 1.56
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -59,6 +59,7 @@ func _shoot():
 		bullet.rotation = direction_vector.angle()
 		get_tree().current_scene.add_child(bullet)
 		anim.play("cast1")
+		$SFX/cast.play()
 
 func _on_chase_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HurtboxPlayer"):
@@ -71,6 +72,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HitboxPlayer"):
 		timeBullet.stop()
 		anim.play("death")
+		GlobalAudio._enemyDeath()
 		Dead = true
 		_knockback()
 

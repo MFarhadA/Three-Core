@@ -19,6 +19,7 @@ func _process(delta):
 		player = Global.playerBody
 		_facing()
 	if Dead:
+		await anim.animation_finished
 		anim.play("Dead")
 	if not Dead:
 		if not is_on_floor():
@@ -53,6 +54,7 @@ func _check_player_collission():
 func _on_timer_bullet_timeout() -> void:
 	isAttacking = true
 	anim.play("cast")
+	$SFX/cast.play()
 	
 func _shoot():
 	var bullet = ammo.instantiate()
@@ -73,6 +75,10 @@ func _on_chase_area_area_exited(area: Area2D) -> void:
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HitboxPlayer"):
 		health -= 1
+		if health > 0:
+			GlobalAudio._hurt()
+		else:
+			GlobalAudio._enemyDeath()
 		_knockback()
 
 func _knockback():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://h2o04miklxwn"]
+[gd_scene load_steps=26 format=3 uid="uid://h2o04miklxwn"]
 
 [ext_resource type="Texture2D" uid="uid://vn5ghrungdsi" path="res://enemy/jenglot/jenglot.png" id="1_7ooks"]
 [ext_resource type="Script" path="res://enemy/jenglot/jenglot.gd" id="1_woy41"]
 [ext_resource type="PackedScene" uid="uid://e4sddqgrpqow" path="res://enemy/jenglot/jenglotP.tscn" id="2_5ww8s"]
+[ext_resource type="AudioStream" uid="uid://fpcvb7uel36b" path="res://audio/sfx/death.mp3" id="4_e5ytt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_su8kf"]
 size = Vector2(17, 47)
@@ -193,6 +194,14 @@ one_shot = true
 
 [node name="TimerKnockback" type="Timer" parent="."]
 one_shot = true
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="cast" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_e5ytt")
+volume_db = -13.117
+pitch_scale = 2.84
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="ChaseArea" to="." method="_on_chase_area_area_entered"]

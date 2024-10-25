@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://cwbecnnhacgeu"]
+[gd_scene load_steps=24 format=3 uid="uid://cwbecnnhacgeu"]
 
 [ext_resource type="Texture2D" uid="uid://dcumnvua3dvw5" path="res://enemy/kuyang/kuyang.png" id="1_q1de2"]
 [ext_resource type="Script" path="res://enemy/kuyang/kuyang.gd" id="1_r50oh"]
+[ext_resource type="AudioStream" uid="uid://lsvcyhcy6b4" path="res://audio/sfx/chase.mp3" id="3_l1yt1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvm3f"]
 atlas = ExtResource("1_q1de2")
@@ -184,6 +185,14 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_7nood")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Chase" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_l1yt1")
+volume_db = -16.865
+pitch_scale = 0.53
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="TimerKnockback" to="." method="_on_timer_knockback_timeout"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://dxrxg05aailc0"]
+[gd_scene load_steps=9 format=4 uid="uid://dxrxg05aailc0"]
 
 [ext_resource type="Script" path="res://map/test_map.gd" id="1_n82cu"]
 [ext_resource type="Texture2D" uid="uid://ceqnxr02jsdr0" path="res://tileset/tileset.png" id="1_ncviw"]
 [ext_resource type="Texture2D" uid="uid://cflke67173c85" path="res://tileset/parallax.jpg" id="3_j14kr"]
 [ext_resource type="PackedScene" uid="uid://et4mwi4b2l3w" path="res://player/player.tscn" id="4_swt3f"]
-[ext_resource type="PackedScene" uid="uid://bjsndylbc2kdv" path="res://boss/lampor/lampor.tscn" id="5_vg1wi"]
+[ext_resource type="PackedScene" uid="uid://cwbecnnhacgeu" path="res://enemy/kuyang/kuyang.tscn" id="5_lsvhi"]
+[ext_resource type="PackedScene" uid="uid://dt2oalf227cxv" path="res://enemy/tuyul/tuyul.tscn" id="6_gogjf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlv4c"]
 texture = ExtResource("1_ncviw")
@@ -234,8 +235,11 @@ texture = ExtResource("3_j14kr")
 position = Vector2(640, 384)
 zoom = Vector2(0.85, 0.85)
 
-[node name="lampor" parent="." instance=ExtResource("5_vg1wi")]
-position = Vector2(632, 488)
-
 [node name="Player" parent="." instance=ExtResource("4_swt3f")]
 position = Vector2(512, 600)
+
+[node name="kuyang" parent="." instance=ExtResource("5_lsvhi")]
+position = Vector2(792, 552)
+
+[node name="tuyul" parent="." instance=ExtResource("6_gogjf")]
+position = Vector2(656, 600)

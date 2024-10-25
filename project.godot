@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Three Core"
-config/version="0.1"
-run/main_scene="res://map/test_map.tscn"
+config/version="0.2"
+run/main_scene="res://menu/splashScreen.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/show_image=false
 config/icon="res://logo/icon.png"
@@ -21,6 +21,7 @@ config/icon="res://logo/icon.png"
 
 Global="*res://global.gd"
 SceneManager="*res://scene_manager.gd"
+GlobalAudio="*res://audio/global_audio.tscn"
 
 [display]
 

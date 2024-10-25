@@ -44,6 +44,7 @@ func move(delta):
 
 func _jump():
 	var dir_player = position.direction_to(player.position)
+	GlobalAudio._jump()
 	velocity.x = dir_player.x * chaseSPEED
 	velocity.y = JUMP_VELOCITY
 	_flip()
@@ -60,8 +61,11 @@ func _on_chase_area_area_exited(area: Area2D) -> void:
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HitboxPlayer"):
 		health -= 1
-		print("hit")
 		isAttacked = true
+		if health > 0:
+			GlobalAudio._hurt()
+		else:
+			GlobalAudio._enemyDeath()
 		_knockback()
 
 func _knockback():
