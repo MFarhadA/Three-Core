@@ -24,7 +24,14 @@ func _process(delta):
 			anim.play("idle")
 		_aim()
 		_check_player_collission()
+		_facing()
 	move_and_slide()
+
+func _facing():
+	if position.x > player.position.x:
+		anim.flip_h = false
+	else:
+		anim.flip_h = true
 
 func _aim():
 	if player != null and not Dead:

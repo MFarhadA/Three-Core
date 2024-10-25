@@ -22,6 +22,7 @@ animations = [{
 size = Vector2(12, 6)
 
 [node name="JerangkongP" type="Area2D" groups=["HitboxEnemies"]]
+z_index = -1
 collision_layer = 2
 script = ExtResource("1_w023x")
 

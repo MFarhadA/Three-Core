@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8vm0o1eujeas"]
+[gd_scene load_steps=8 format=3 uid="uid://c8vm0o1eujeas"]
 
 [ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="1_336yx"]
 [ext_resource type="Texture2D" uid="uid://cg7hau20aisek" path="res://logo/full_icon.png" id="1_uhbxu"]
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="2_0deaw"]
 [ext_resource type="PackedScene" uid="uid://dxrxg05aailc0" path="res://map/test_map.tscn" id="3_2c4xe"]
+[ext_resource type="PackedScene" uid="uid://cbv0v1o853rl3" path="res://tileset/ParallaxBG.tscn" id="4_kin4o"]
 [ext_resource type="PackedScene" uid="uid://pkis2eg4jocv" path="res://menu/black_transisiton.tscn" id="5_1fdm7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_swes6"]
@@ -20,13 +21,33 @@ theme = ExtResource("1_336yx")
 script = ExtResource("2_0deaw")
 start = ExtResource("3_2c4xe")
 
+[node name="ParallaxBG" parent="." instance=ExtResource("4_kin4o")]
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_right = 1299.0
 offset_bottom = 743.0
+color = Color(0, 0, 0, 0.631373)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+offset_right = 1280.0
+offset_bottom = 100.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 520.0
+offset_right = 1280.0
+offset_bottom = 620.0
+grow_vertical = 0
 color = Color(0, 0, 0, 1)
 
 [node name="FullIcon" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(639, 252)
 scale = Vector2(0.273611, 0.273611)
 texture = ExtResource("1_uhbxu")
@@ -34,6 +55,7 @@ texture = ExtResource("1_uhbxu")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 top_level = true
 z_index = 1
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

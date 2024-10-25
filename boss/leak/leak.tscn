@@ -370,7 +370,7 @@ size = Vector2(58, 112)
 size = Vector2(58, 114)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g5mmi"]
-size = Vector2(50, 140)
+size = Vector2(106, 140)
 
 [node name="leak" type="CharacterBody2D"]
 collision_layer = 64
@@ -408,7 +408,7 @@ priority = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(-46, -10)
+position = Vector2(-18, -10)
 shape = SubResource("RectangleShape2D_g5mmi")
 disabled = true
 

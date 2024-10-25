@@ -5,10 +5,14 @@ extends Control
 @export var credit : PackedScene
 @export var quit : PackedScene
 var Scene = SceneManager
+@onready var parallax = $ParallaxBG
 
 func _ready() -> void:
 	$black_transisition.play("start_transisition")
 	$VBoxContainer/startButton.grab_focus()
+
+func _process(delta: float) -> void:
+	parallax.scroll_offset.x -= 100 * delta
 
 func _on_start_button_pressed() -> void:
 	$black_transisition.play("quit_transisition")

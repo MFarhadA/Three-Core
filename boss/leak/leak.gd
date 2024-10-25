@@ -15,7 +15,9 @@ var Dead : bool = false
 var player : CharacterBody2D
 
 func _physics_process(delta: float) -> void:
-	player = Global.playerBody
+	if Global.playerBody != null:
+		player = Global.playerBody
+		_facing()
 	if not Dead and not isAttacking:
 		await get_tree().create_timer(0.01).timeout
 		anim.play("idle")
@@ -24,7 +26,17 @@ func _physics_process(delta: float) -> void:
 	if health <= 0:
 		_death()
 	move_and_slide()
-	
+
+func _facing():
+	var hitbox_position = hitbox.position
+	if position.x > player.position.x:
+		anim.flip_h = false
+		hitbox_position.x = -abs(hitbox_position.x)
+	else:
+		anim.flip_h = true
+		hitbox_position.x = abs(hitbox_position.x)
+	hitbox.position = hitbox_position
+
 func _on_timer_skill_timeout() -> void:
 	_chooseSkill()
 	
@@ -32,11 +44,11 @@ func _chooseSkill():
 	var choose = randi_range(1,3)
 	match choose:
 		1:
-			_skill1()
+			_skill2()
 		2:
 			_skill2()
 		3:
-			_skill3()
+			_skill2()
 
 func _skill1():
 	anim.play("skill1")
@@ -49,7 +61,12 @@ func _skill2():
 	await anim.animation_finished
 	var projectile2 = skill2p.instantiate()
 	projectile2.position = position
-	projectile2.direction = Vector2.LEFT
+	if position.x < player.position.x:
+		projectile2.direction = Vector2.RIGHT
+		projectile2.rotation_degrees = 180
+	else:
+		projectile2.direction = Vector2.LEFT
+		projectile2.rotation_degrees = 0
 	get_tree().current_scene.add_child(projectile2)
 	anim.play("skill22")
 
