@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://5g6jefgxooyn"]
+
+[ext_resource type="Texture2D" uid="uid://cxu30itd65mcc" path="res://boss/lampor/lampor.png" id="1_d7wl1"]
+[ext_resource type="Script" path="res://boss/lampor/lampor_2p.gd" id="1_rpekp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xckol"]
+atlas = ExtResource("1_d7wl1")
+region = Rect2(0, 3000, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g7qy"]
+atlas = ExtResource("1_d7wl1")
+region = Rect2(500, 3000, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvot6"]
+atlas = ExtResource("1_d7wl1")
+region = Rect2(1000, 3000, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tydt6"]
+atlas = ExtResource("1_d7wl1")
+region = Rect2(1500, 3000, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2dfa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xckol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g7qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvot6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tydt6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b4wqv"]
+radius = 22.0
+height = 76.0
+
+[node name="lampor_2p" type="Area2D" groups=["HitboxEnemies"]]
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_rpekp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_r2dfa")
+frame_progress = 0.592397
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_b4wqv")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(5.6, 5.6)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

@@ -1,25 +1,43 @@
 extends CharacterBody2D
 
-var health = 20
+var health = 40
 
-var move_speed : float = 100.0
+var chaseSPEED : float = 200.0
+var JUMP_VELOCITY = -600.0
+
 
 var isAttacking : bool = false
+var isJump :bool = false
 var Dead : bool = false
 
 @onready var anim = $AnimatedSprite2D
 @onready var timeSkill = $TimerSkill
 @onready var hitbox = $Hitbox/CollisionShape2D
+@onready var hitbox2 = $Hitbox/CollisionShape2D2
 @onready var hurtbox = $Hurtbox/CollisionShape2D
 @onready var collission = $CollisionShape2D
 @export var skill2p : PackedScene
-@export var skill3p : PackedScene
 var player : CharacterBody2D
 
 func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	if isJump:
+		hitbox2.disabled = false
+		if is_on_floor():
+			print("false")
+			anim.play("idle")
+			velocity.x = 0
+			isJump = false
+			isAttacking = false
+			hitbox2.disabled = false
+	else:
+		hitbox2.disabled = true
+		
 	if Global.playerBody != null:
 		player = Global.playerBody
-		_facing()
+		if is_on_floor():
+			_facing()
 	if not Dead and not isAttacking:
 		await get_tree().create_timer(0.01).timeout
 		anim.play("idle")
@@ -32,21 +50,25 @@ func _physics_process(delta: float) -> void:
 
 func _facing():
 	var hitbox_position = hitbox.position
+	var hitbox2_position = hitbox2.position
 	var hurtbox_position = hurtbox.position
 	var collission_position = collission.position
 	if position.x > player.position.x:
 		anim.flip_h = false
 		anim.offset.x = 0
 		hitbox_position.x = -abs(hitbox_position.x)
+		hitbox2_position.x = -abs(hitbox2_position.x)
 		hurtbox_position.x = -abs(hurtbox_position.x)
 		collission_position.x = -abs(collission_position.x)
 	else:
 		anim.flip_h = true
-		anim.offset.x = 15
+		anim.offset.x = 45
 		hitbox_position.x = abs(hitbox_position.x)
+		hitbox2_position.x = abs(hitbox2_position.x)
 		hurtbox_position.x = abs(hurtbox_position.x)
 		collission_position.x = abs(collission_position.x)
 	hitbox.position = hitbox_position
+	hitbox2.position = hitbox2_position
 	hurtbox.position = hurtbox_position
 	collission.position = collission_position
 
@@ -82,28 +104,15 @@ func _skill2():
 		projectile2.scale.x = 1
 	get_tree().current_scene.add_child(projectile2)
 	anim.play("skill22")
+	hitbox2.disabled = false
 
 func _skill3():
-	var original_pos = position
-	var target_pos = position + Vector2(0, -100)
 	anim.play("skill3")
-	while position.y > target_pos.y + 1:
-		position.y = lerp(position.y, target_pos.y, move_speed * get_process_delta_time())
-		await get_tree().create_timer(0.01).timeout
-	_skill3p()
-	anim.play("skill33")
-	await anim.animation_finished
-	while position.y < original_pos.y - 1:
-		position.y = lerp(position.y, original_pos.y, move_speed * get_process_delta_time())
-		await get_tree().create_timer(0.01).timeout
-	position.y = original_pos.y
-	isAttacking = false
-func _skill3p():
-	if player != null and not Dead:
-		var projectile3 = skill3p.instantiate()
-		projectile3.position = player.position + Vector2(0,-800)
-		projectile3.direction = Vector2.DOWN
-		get_tree().current_scene.add_child(projectile3)
+	var dir_player = position.direction_to(player.position)
+	velocity.x = dir_player.x * chaseSPEED
+	velocity.y = JUMP_VELOCITY
+	await get_tree().create_timer(0.2).timeout
+	isJump = true
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HitboxPlayer"):
@@ -124,4 +133,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		hitbox.disabled = true
 		isAttacking = false
 	if anim.animation == "skill22":
+		hitbox2.disabled = true
 		isAttacking = false

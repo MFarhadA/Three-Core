@@ -13,10 +13,11 @@ var isAttacking : bool = false
 var Dead : bool = false
 var player : CharacterBody2D
 
-func _ready():
-	player = Global.playerBody
 
 func _process(delta):
+	if Global.playerBody != null:
+		player = Global.playerBody
+		_facing()
 	if not Dead:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -25,6 +26,12 @@ func _process(delta):
 		_aim()
 		_check_player_collission()
 	move_and_slide()
+
+func _facing():
+	if position.x > player.position.x:
+		anim.flip_h = false
+	else:
+		anim.flip_h = true
 
 func _aim():
 	if player != null and not Dead:

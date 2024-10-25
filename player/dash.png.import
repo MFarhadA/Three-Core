@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gfju4452rdfb"
-path="res://.godot/imported/Kuroko.png-e238935a0671465c053bce4c96104e97.ctex"
+uid="uid://bwf6mfi2eitua"
+path="res://.godot/imported/dash.png-b22065b8f07a960d13994af43d89d30c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://logo/Kuroko.png"
-dest_files=["res://.godot/imported/Kuroko.png-e238935a0671465c053bce4c96104e97.ctex"]
+source_file="res://player/dash.png"
+dest_files=["res://.godot/imported/dash.png-b22065b8f07a960d13994af43d89d30c.ctex"]
 
 [params]
 

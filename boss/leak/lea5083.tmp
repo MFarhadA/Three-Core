@@ -1,7 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://c7pikon8fqtc2"]
+[gd_scene load_steps=51 format=3 uid="uid://c7pikon8fqtc2"]
 
 [ext_resource type="Texture2D" uid="uid://dpbe1vashe2v6" path="res://boss/leak/leak.png" id="1_0vren"]
 [ext_resource type="Script" path="res://boss/leak/leak.gd" id="1_jwu4b"]
+[ext_resource type="PackedScene" uid="uid://b1xanvxr52u2h" path="res://boss/leak/leak_2p.tscn" id="2_qck3k"]
+[ext_resource type="PackedScene" uid="uid://dlal0ot03b0nh" path="res://boss/leak/leak_3p.tscn" id="3_17x0h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8g18"]
 atlas = ExtResource("1_0vren")
@@ -98,6 +100,78 @@ region = Rect2(1536, 256, 256, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dmma8"]
 atlas = ExtResource("1_0vren")
 region = Rect2(1792, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrxu7"]
+atlas = ExtResource("1_0vren")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1jr3"]
+atlas = ExtResource("1_0vren")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttc3n"]
+atlas = ExtResource("1_0vren")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3abb"]
+atlas = ExtResource("1_0vren")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra1ey"]
+atlas = ExtResource("1_0vren")
+region = Rect2(1024, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu2wd"]
+atlas = ExtResource("1_0vren")
+region = Rect2(1280, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77122"]
+atlas = ExtResource("1_0vren")
+region = Rect2(1536, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fg2vl"]
+atlas = ExtResource("1_0vren")
+region = Rect2(1792, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2yth"]
+atlas = ExtResource("1_0vren")
+region = Rect2(2048, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks2u2"]
+atlas = ExtResource("1_0vren")
+region = Rect2(2304, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfdms"]
+atlas = ExtResource("1_0vren")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md7t0"]
+atlas = ExtResource("1_0vren")
+region = Rect2(256, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywtc2"]
+atlas = ExtResource("1_0vren")
+region = Rect2(512, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbeer"]
+atlas = ExtResource("1_0vren")
+region = Rect2(768, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6dvo"]
+atlas = ExtResource("1_0vren")
+region = Rect2(1024, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5ag2"]
+atlas = ExtResource("1_0vren")
+region = Rect2(1280, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyf0n"]
+atlas = ExtResource("1_0vren")
+region = Rect2(1536, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk162"]
+atlas = ExtResource("1_0vren")
+region = Rect2(1792, 768, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b8fgt"]
 animations = [{
@@ -198,6 +272,95 @@ animations = [{
 "loop": false,
 "name": &"skill11",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrxu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1jr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttc3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3abb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3abb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3abb")
+}],
+"loop": false,
+"name": &"skill2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra1ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu2wd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77122")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fg2vl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2yth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks2u2")
+}],
+"loop": false,
+"name": &"skill22",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfdms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md7t0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywtc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbeer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbeer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbeer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbeer")
+}],
+"loop": false,
+"name": &"skill3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6dvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5ag2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyf0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk162")
+}],
+"loop": false,
+"name": &"skill33",
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8ygk"]
@@ -212,11 +375,13 @@ size = Vector2(50, 140)
 [node name="leak" type="CharacterBody2D"]
 collision_layer = 64
 script = ExtResource("1_jwu4b")
+skill2p = ExtResource("2_qck3k")
+skill3p = ExtResource("3_17x0h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_b8fgt")
-animation = &"skill11"
+animation = &"skill33"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -249,6 +414,8 @@ disabled = true
 
 [node name="TimerSkill" type="Timer" parent="."]
 one_shot = true
+autostart = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="TimerSkill" to="." method="_on_timer_skill_timeout"]

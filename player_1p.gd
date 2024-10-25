@@ -13,9 +13,11 @@ func _physics_process(delta: float) -> void:
 func _flip():
 	if direction.x != 0:
 		var hitbox_position = collisionShape.position
-		if direction.x < 0:
+		if direction.x > 0:
+			anim.flip_h = false
 			hitbox_position.x = -abs(hitbox_position.x)
 		else:
+			anim.flip_h = true
 			hitbox_position.x = abs(hitbox_position.x)
 		collisionShape.position = hitbox_position
 

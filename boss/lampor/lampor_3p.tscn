@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bi3pfdb5hcsg"]
+
+[ext_resource type="Script" path="res://boss/lampor/lampor_3p.gd" id="1_mm21m"]
+[ext_resource type="Texture2D" uid="uid://cxu30itd65mcc" path="res://boss/lampor/lampor.png" id="2_hxh8h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db7xr"]
+atlas = ExtResource("2_hxh8h")
+region = Rect2(0, 2500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stqbb"]
+atlas = ExtResource("2_hxh8h")
+region = Rect2(500, 2500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iyhm"]
+atlas = ExtResource("2_hxh8h")
+region = Rect2(1000, 2500, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4i2s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db7xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stqbb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4iyhm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rc2vr"]
+radius = 20.0
+height = 82.0
+
+[node name="lampor_3p" type="Area2D" groups=["HitboxEnemies"]]
+z_index = -1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_mm21m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-25, 20)
+sprite_frames = SubResource("SpriteFrames_c4i2s")
+frame_progress = 0.884075
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rc2vr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.999999, 0)
+scale = Vector2(3.3, 5.7)

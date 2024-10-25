@@ -10,13 +10,23 @@ var Dead : bool = false
 @onready var anim = $AnimatedSprite2D
 @onready var timeSkill = $TimerSkill
 @onready var hitbox = $Hitbox/CollisionShape2D
+@onready var hitbox2 = $Hitbox/CollisionShape2D2
 @onready var hurtbox = $Hurtbox/CollisionShape2D
 @onready var collission = $CollisionShape2D
+@onready var raycast = $RayCast2D
 @export var skill2p : PackedScene
 @export var skill3p : PackedScene
 var player : CharacterBody2D
 
+@onready var timeSkill3 = $Skill3/TimerSkill3
+@onready var timeSkill3p = $Skill3/TimerSkill3p
+
+var original_pos
+var target_pos
+
 func _physics_process(delta: float) -> void:
+	if not Dead:
+		_aim()
 	if Global.playerBody != null:
 		player = Global.playerBody
 		_facing()
@@ -32,21 +42,25 @@ func _physics_process(delta: float) -> void:
 
 func _facing():
 	var hitbox_position = hitbox.position
+	var hitbox2_position = hitbox2.position
 	var hurtbox_position = hurtbox.position
 	var collission_position = collission.position
 	if position.x > player.position.x:
 		anim.flip_h = false
 		anim.offset.x = 0
 		hitbox_position.x = -abs(hitbox_position.x)
+		hitbox2_position.x = -abs(hitbox2_position.x)
 		hurtbox_position.x = -abs(hurtbox_position.x)
 		collission_position.x = -abs(collission_position.x)
 	else:
 		anim.flip_h = true
-		anim.offset.x = 15
+		anim.offset.x = -18
 		hitbox_position.x = abs(hitbox_position.x)
+		hitbox2_position.x = abs(hitbox2_position.x)
 		hurtbox_position.x = abs(hurtbox_position.x)
 		collission_position.x = abs(collission_position.x)
 	hitbox.position = hitbox_position
+	hitbox2.position = hitbox2_position
 	hurtbox.position = hurtbox_position
 	collission.position = collission_position
 
@@ -69,35 +83,41 @@ func _skill1():
 	hitbox.disabled = false
 	anim.play("skill11")
 
+func _aim():
+	if player != null and not Dead:
+		raycast.target_position = to_local(player.position)
 func _skill2():
 	anim.play("skill2")
+	_aim()
 	await anim.animation_finished
-	var projectile2 = skill2p.instantiate()
-	projectile2.position = position
-	if position.x < player.position.x:
-		projectile2.direction = Vector2.RIGHT
-		projectile2.scale.x = -1
-	else:
-		projectile2.direction = Vector2.LEFT
-		projectile2.scale.x = 1
-	get_tree().current_scene.add_child(projectile2)
+	var tween = create_tween()
+	var bullet = skill2p.instantiate()
+	bullet.position = position
+	var direction_vector = (raycast.target_position).normalized()
+	bullet.direction = direction_vector
+	bullet.rotation = direction_vector.angle()
+	get_tree().current_scene.add_child(bullet)
 	anim.play("skill22")
+	hitbox2.disabled = false
 
 func _skill3():
-	var original_pos = position
-	var target_pos = position + Vector2(0, -100)
+	original_pos = position
+	target_pos = position + Vector2(0, -100)
 	anim.play("skill3")
 	while position.y > target_pos.y + 1:
 		position.y = lerp(position.y, target_pos.y, move_speed * get_process_delta_time())
 		await get_tree().create_timer(0.01).timeout
-	_skill3p()
-	anim.play("skill33")
-	await anim.animation_finished
+	timeSkill3.start(5)
+	timeSkill3p.start()
+func _on_timer_skill_3_timeout() -> void:
+	timeSkill3p.stop()
 	while position.y < original_pos.y - 1:
 		position.y = lerp(position.y, original_pos.y, move_speed * get_process_delta_time())
 		await get_tree().create_timer(0.01).timeout
 	position.y = original_pos.y
 	isAttacking = false
+func _on_timer_skill_3p_timeout() -> void:
+	_skill3p()
 func _skill3p():
 	if player != null and not Dead:
 		var projectile3 = skill3p.instantiate()
@@ -124,4 +144,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		hitbox.disabled = true
 		isAttacking = false
 	if anim.animation == "skill22":
+		hitbox2.disabled = true
 		isAttacking = false
