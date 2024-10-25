@@ -17,6 +17,10 @@ config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/show_image=false
 config/icon="res://logo/icon.png"
 
+[audio]
+
+buses/default_bus_layout="res://audio/default_bus_layout.tres"
+
 [autoload]
 
 Global="*res://global.gd"

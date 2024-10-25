@@ -21,7 +21,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34q35"]
 size = Vector2(23, 19)
 
-[node name="genderuwo_2p" type="Area2D"]
+[node name="genderuwo_2p" type="Area2D" groups=["HitboxEnemies"]]
 script = ExtResource("1_u4t8i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

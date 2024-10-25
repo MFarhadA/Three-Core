@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://et4mwi4b2l3w"]
+[gd_scene load_steps=78 format=3 uid="uid://et4mwi4b2l3w"]
 
 [ext_resource type="Texture2D" uid="uid://1qcieda2t8ve" path="res://player/player.png" id="1_72phs"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_uk7lu"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://pkis2eg4jocv" path="res://menu/black_transisiton.tscn" id="4_5fcs6"]
 [ext_resource type="Script" path="res://user_interface/ui.gd" id="5_lxjxr"]
 [ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="6_vdy0p"]
+[ext_resource type="Texture2D" uid="uid://hssma2ppw2p1" path="res://menu/player/health.png" id="7_6an51"]
+[ext_resource type="Texture2D" uid="uid://cejo3myy77f4h" path="res://menu/player/Skill.png" id="8_egrg3"]
+[ext_resource type="Texture2D" uid="uid://dq2bu7y5lu04h" path="res://menu/player/up.png" id="8_jj24f"]
 [ext_resource type="AudioStream" uid="uid://byo5hnj7lspid" path="res://audio/sfx/dash.mp3" id="9_1f6y0"]
 [ext_resource type="AudioStream" uid="uid://bx2wkffgjm1h7" path="res://audio/sfx/heal.mp3" id="9_4kwxa"]
 [ext_resource type="AudioStream" uid="uid://d050c8aw6uwkc" path="res://audio/sfx/deathEnemy.mp3" id="9_7kft1"]
@@ -466,6 +469,12 @@ size = Vector2(43, 51)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8yoh"]
 size = Vector2(24, 48)
 
+[sub_resource type="LabelSettings" id="LabelSettings_vhq8k"]
+font_size = 27
+
+[sub_resource type="LabelSettings" id="LabelSettings_gfne2"]
+font_size = 21
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 128
 script = ExtResource("1_uk7lu")
@@ -536,26 +545,129 @@ one_shot = true
 [node name="user_interface" parent="." instance=ExtResource("3_1ug8a")]
 script = ExtResource("5_lxjxr")
 
-[node name="Jump" type="Label" parent="user_interface"]
+[node name="up1" type="Label" parent="user_interface"]
 top_level = true
 z_index = 100
-offset_left = 195.0
-offset_top = 634.0
-offset_right = 255.0
-offset_bottom = 707.0
+texture_filter = 1
+offset_left = 113.0
+offset_top = 658.0
+offset_right = 140.0
+offset_bottom = 706.0
 theme = ExtResource("6_vdy0p")
-text = "JUMP
-SKILL 1
-SKILL 2
-SKILL 3"
+text = "3"
+label_settings = SubResource("LabelSettings_vhq8k")
 
-[node name="Health" type="Label" parent="user_interface"]
-offset_left = 16.0
-offset_top = 633.0
-offset_right = 80.0
-offset_bottom = 656.0
+[node name="health1" type="Label" parent="user_interface"]
+top_level = true
+z_index = 100
+texture_filter = 1
+offset_left = 278.0
+offset_top = 658.0
+offset_right = 305.0
+offset_bottom = 706.0
 theme = ExtResource("6_vdy0p")
-text = "HEALTH"
+text = "3"
+label_settings = SubResource("LabelSettings_vhq8k")
+
+[node name="key" type="Label" parent="user_interface"]
+texture_filter = 1
+offset_left = 924.0
+offset_top = 693.0
+offset_right = 1183.0
+offset_bottom = 716.0
+theme = ExtResource("6_vdy0p")
+text = "J           K           L          ;"
+label_settings = SubResource("LabelSettings_gfne2")
+
+[node name="up" type="Sprite2D" parent="user_interface"]
+z_index = 100
+texture_filter = 1
+position = Vector2(56, 670)
+scale = Vector2(0.0639345, 0.0639344)
+texture = ExtResource("8_jj24f")
+hframes = 2
+
+[node name="health" type="Sprite2D" parent="user_interface"]
+top_level = true
+z_index = 100
+texture_filter = 1
+position = Vector2(227, 670)
+scale = Vector2(0.0527777, 0.0527777)
+texture = ExtResource("7_6an51")
+
+[node name="basic" type="Sprite2D" parent="user_interface"]
+z_index = 100
+texture_filter = 1
+position = Vector2(962, 666)
+scale = Vector2(0.112095, 0.112095)
+texture = ExtResource("8_egrg3")
+hframes = 4
+
+[node name="skill1" type="Sprite2D" parent="user_interface"]
+z_index = 100
+texture_filter = 1
+position = Vector2(1043, 666)
+scale = Vector2(0.112095, 0.112095)
+texture = ExtResource("8_egrg3")
+hframes = 4
+frame = 2
+
+[node name="skill1" type="Label" parent="user_interface/skill1"]
+top_level = true
+z_index = 100
+texture_filter = 1
+offset_left = 1030.0
+offset_top = 655.0
+offset_right = 1057.0
+offset_bottom = 703.0
+theme = ExtResource("6_vdy0p")
+text = "3"
+label_settings = SubResource("LabelSettings_vhq8k")
+horizontal_alignment = 1
+
+[node name="skill2" type="Sprite2D" parent="user_interface"]
+z_index = 100
+texture_filter = 1
+position = Vector2(1125, 666)
+scale = Vector2(0.112095, 0.112095)
+texture = ExtResource("8_egrg3")
+hframes = 4
+frame = 1
+
+[node name="skill2" type="Label" parent="user_interface/skill2"]
+top_level = true
+z_index = 100
+texture_filter = 1
+offset_left = 1112.0
+offset_top = 655.0
+offset_right = 1139.0
+offset_bottom = 703.0
+theme = ExtResource("6_vdy0p")
+text = "3"
+label_settings = SubResource("LabelSettings_vhq8k")
+horizontal_alignment = 1
+
+[node name="skill3" type="Sprite2D" parent="user_interface"]
+z_index = 100
+texture_filter = 1
+position = Vector2(1207, 666)
+scale = Vector2(0.112095, 0.112095)
+texture = ExtResource("8_egrg3")
+hframes = 4
+frame = 3
+
+[node name="skill3" type="Label" parent="user_interface/skill3"]
+top_level = true
+z_index = 100
+texture_filter = 1
+offset_left = 1183.0
+offset_top = 654.0
+offset_right = 1229.0
+offset_bottom = 702.0
+theme = ExtResource("6_vdy0p")
+text = "230"
+label_settings = SubResource("LabelSettings_vhq8k")
+horizontal_alignment = 1
 
 [node name="black_transisition" parent="." instance=ExtResource("4_5fcs6")]
 
