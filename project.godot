@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Three Core"
 config/version="0.1"
-run/main_scene="res://menu/splashScreen.tscn"
+run/main_scene="res://map/test_map.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/show_image=false
 config/icon="res://logo/icon.png"

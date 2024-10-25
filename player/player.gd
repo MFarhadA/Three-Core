@@ -40,7 +40,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	#print("FPS: ", Engine.get_frames_per_second())
-	print(isSkill2)
 	if Input.is_action_just_pressed("dash") and not isDashing and not isDashCD and not isAttacking and not Dead:
 		_dash()
 	

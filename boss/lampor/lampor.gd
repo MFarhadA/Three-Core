@@ -10,6 +10,7 @@ var Dead : bool = false
 @onready var anim = $AnimatedSprite2D
 @onready var timeSkill = $TimerSkill
 @onready var hitbox = $Hitbox/CollisionShape2D
+@onready var hitbox2 = $Hitbox/CollisionShape2D2
 @onready var hurtbox = $Hurtbox/CollisionShape2D
 @onready var collission = $CollisionShape2D
 @export var skill2p : PackedScene
@@ -32,21 +33,25 @@ func _physics_process(delta: float) -> void:
 
 func _facing():
 	var hitbox_position = hitbox.position
+	var hitbox2_position = hitbox2.position
 	var hurtbox_position = hurtbox.position
 	var collission_position = collission.position
 	if position.x > player.position.x:
 		anim.flip_h = false
 		anim.offset.x = 0
 		hitbox_position.x = -abs(hitbox_position.x)
+		hitbox2_position.x = -abs(hitbox2_position.x)
 		hurtbox_position.x = -abs(hurtbox_position.x)
 		collission_position.x = -abs(collission_position.x)
 	else:
 		anim.flip_h = true
-		anim.offset.x = 15
+		anim.offset.x = -18
 		hitbox_position.x = abs(hitbox_position.x)
+		hitbox2_position.x = abs(hitbox2_position.x)
 		hurtbox_position.x = abs(hurtbox_position.x)
 		collission_position.x = abs(collission_position.x)
 	hitbox.position = hitbox_position
+	hitbox2.position = hitbox2_position
 	hurtbox.position = hurtbox_position
 	collission.position = collission_position
 
