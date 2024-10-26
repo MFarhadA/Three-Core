@@ -49,6 +49,7 @@ grow_vertical = 0
 color = Color(0, 0, 0, 1)
 
 [node name="FullIcon" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(639, 252)
 scale = Vector2(0.273611, 0.273611)
 texture = ExtResource("1_uhbxu")

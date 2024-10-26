@@ -88,6 +88,7 @@ offset_bottom = 729.0
 color = Color(0, 0, 0, 1)
 
 [node name="Label3" type="Label" parent="."]
+layout_mode = 0
 offset_left = 24.0
 offset_top = 680.0
 offset_right = 243.0

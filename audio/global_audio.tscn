@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnh8rsexj36ch"]
+[gd_scene load_steps=12 format=3 uid="uid://dnh8rsexj36ch"]
 
 [ext_resource type="Script" path="res://global_audio.gd" id="1_n3uph"]
 [ext_resource type="AudioStream" uid="uid://crarfsgy0foe6" path="res://audio/music/mainmenu.mp3" id="2_rkgwo"]
+[ext_resource type="AudioStream" uid="uid://camy5ynqr88ha" path="res://audio/music/gameover.mp3" id="2_u6rky"]
 [ext_resource type="AudioStream" uid="uid://bngeog4ykjsrm" path="res://audio/music/credit.mp3" id="3_hc0rt"]
 [ext_resource type="AudioStream" uid="uid://dtw3odeu4aqpr" path="res://audio/sfx/click.mp3" id="3_qrwmx"]
 [ext_resource type="AudioStream" uid="uid://dta4vehtl1kiy" path="res://audio/sfx/hurt.mp3" id="4_u444a"]
 [ext_resource type="AudioStream" uid="uid://cdbn8p36bigl0" path="res://audio/sfx/jump.mp3" id="5_acved"]
+[ext_resource type="AudioStream" uid="uid://gn515elete3w" path="res://audio/music/map.mp3" id="5_uqved"]
 [ext_resource type="AudioStream" uid="uid://d050c8aw6uwkc" path="res://audio/sfx/deathEnemy.mp3" id="6_owk7g"]
 [ext_resource type="AudioStream" uid="uid://br4vh8ibjuaaw" path="res://audio/sfx/shoot.mp3" id="7_wc1yc"]
 [ext_resource type="AudioStream" uid="uid://fpcvb7uel36b" path="res://audio/sfx/death.mp3" id="8_8g6wi"]
@@ -15,13 +17,21 @@ script = ExtResource("1_n3uph")
 
 [node name="Music" type="Node" parent="."]
 
+[node name="Gameover" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("2_u6rky")
+bus = &"Music"
+
 [node name="Mainmenu" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("2_rkgwo")
 bus = &"Music"
 
 [node name="Credit" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("3_hc0rt")
-bus = &"SFX"
+bus = &"Music"
+
+[node name="Map" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("5_uqved")
+bus = &"Music"
 
 [node name="SFX" type="Node" parent="."]
 

@@ -57,13 +57,14 @@ func _on_timer_bullet_timeout() -> void:
 	$SFX/cast.play()
 	
 func _shoot():
-	var bullet = ammo.instantiate()
-	bullet.position = position
-	var direction_vector = (raycast.target_position).normalized()
-	bullet.direction = direction_vector
-	bullet.rotation = direction_vector.angle()
-	get_tree().current_scene.add_child(bullet)
-	anim.play("cast1")
+	if not Dead:
+		var bullet = ammo.instantiate()
+		bullet.position = position
+		var direction_vector = (raycast.target_position).normalized()
+		bullet.direction = direction_vector
+		bullet.rotation = direction_vector.angle()
+		get_tree().current_scene.add_child(bullet)
+		anim.play("cast1")
 
 func _on_chase_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("HurtboxPlayer"):

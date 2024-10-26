@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://et4mwi4b2l3w"]
+[gd_scene load_steps=83 format=3 uid="uid://et4mwi4b2l3w"]
 
 [ext_resource type="Texture2D" uid="uid://1qcieda2t8ve" path="res://player/player.png" id="1_72phs"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_uk7lu"]
@@ -489,6 +489,45 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../user_interface/red:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../user_interface/red:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_j7ys7"]
+resource_name = "death_transisition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../user_interface/red:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_pval1"]
 resource_name = "quit_transisition"
@@ -519,10 +558,23 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../user_interface/red:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l6rbo"]
 _data = {
 "RESET": SubResource("Animation_3fpol"),
+"death_transisition": SubResource("Animation_j7ys7"),
 "quit_transisition": SubResource("Animation_pval1"),
 "start_transisition": SubResource("Animation_pycsc")
 }
@@ -719,6 +771,15 @@ theme = ExtResource("6_vdy0p")
 text = "230"
 label_settings = SubResource("LabelSettings_vhq8k")
 horizontal_alignment = 1
+
+[node name="red" type="ColorRect" parent="user_interface"]
+modulate = Color(1, 1, 1, 0)
+z_index = 100
+offset_left = -182.0
+offset_top = -156.0
+offset_right = 1515.0
+offset_bottom = 830.0
+color = Color(0.431373, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="user_interface"]
 modulate = Color(1, 1, 1, 0)

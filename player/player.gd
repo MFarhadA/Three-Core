@@ -163,7 +163,7 @@ func _skill1():
 func _skill2():
 	isSkill2 = true
 	hurtbox.disabled = true
-	anim.modulate = Color(0.859, 0.137, 0.137)
+	anim.modulate = Color(0.86, 0.138, 0.138, 0.329)
 	timeInvisible.start(5)
 	
 func _skill3():
@@ -202,19 +202,21 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if not hurtbox.disabled and area.is_in_group("HitboxEnemies"):
 		health -= 1
 		if health > 0:
+			$user_interface/red.modulate = Color(1, 1, 1)
 			GlobalAudio.hurt.play()
 			_invisible()
 		else:
 			_revive()
 
 func _gameOver():
-	transition.play("quit_transisition")
+	transition.play("death_transisition")
 	await transition.animation_finished
 	get_tree().change_scene_to_packed(game_over)
 
 func _revive():
 	revive -= 1
 	if revive > 0:
+		GlobalAudio.hurt.play()
 		health = 3
 		_invisible()
 		position = Checkpoint

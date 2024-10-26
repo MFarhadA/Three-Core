@@ -26,7 +26,6 @@ func _physics_process(delta: float) -> void:
 	if isJump:
 		hitbox2.disabled = false
 		if is_on_floor():
-			print("false")
 			anim.play("idle")
 			velocity.x = 0
 			isJump = false
