@@ -49,7 +49,6 @@ grow_vertical = 0
 color = Color(0, 0, 0, 1)
 
 [node name="FullIcon" type="Sprite2D" parent="."]
-texture_filter = 1
 position = Vector2(639, 252)
 scale = Vector2(0.273611, 0.273611)
 texture = ExtResource("1_uhbxu")
@@ -64,13 +63,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -118.0
-offset_top = 63.0
-offset_right = 41.0
-offset_bottom = 199.0
+offset_left = -135.0
+offset_top = 47.0
+offset_right = 24.0
+offset_bottom = 183.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.7, 1.7)
 
 [node name="startButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -98,6 +97,7 @@ offset_left = 35.0
 offset_top = 670.0
 offset_right = 88.0
 offset_bottom = 694.0
+theme = ExtResource("1_336yx")
 text = "v 0.2 - demo"
 label_settings = SubResource("LabelSettings_swes6")
 

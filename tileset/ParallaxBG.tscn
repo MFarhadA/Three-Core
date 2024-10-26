@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dbecw3341u44y" path="res://tileset/parallax4.png" id="4_7ugh4"]
 
 [node name="ParallaxBG" type="ParallaxBackground"]
-offset = Vector2(0, 25.59)
-transform = Transform2D(1, 0, 0, 1, 0, 25.59)
 
 [node name="parallax0" type="ParallaxLayer" parent="."]
 texture_filter = 1
