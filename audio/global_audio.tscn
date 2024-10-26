@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnh8rsexj36ch"]
+[gd_scene load_steps=10 format=3 uid="uid://dnh8rsexj36ch"]
 
 [ext_resource type="Script" path="res://global_audio.gd" id="1_n3uph"]
 [ext_resource type="AudioStream" uid="uid://crarfsgy0foe6" path="res://audio/music/mainmenu.mp3" id="2_rkgwo"]
+[ext_resource type="AudioStream" uid="uid://bngeog4ykjsrm" path="res://audio/music/credit.mp3" id="3_hc0rt"]
 [ext_resource type="AudioStream" uid="uid://dtw3odeu4aqpr" path="res://audio/sfx/click.mp3" id="3_qrwmx"]
 [ext_resource type="AudioStream" uid="uid://dta4vehtl1kiy" path="res://audio/sfx/hurt.mp3" id="4_u444a"]
 [ext_resource type="AudioStream" uid="uid://cdbn8p36bigl0" path="res://audio/sfx/jump.mp3" id="5_acved"]
@@ -17,6 +18,10 @@ script = ExtResource("1_n3uph")
 [node name="Mainmenu" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("2_rkgwo")
 bus = &"Music"
+
+[node name="Credit" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_hc0rt")
+bus = &"SFX"
 
 [node name="SFX" type="Node" parent="."]
 

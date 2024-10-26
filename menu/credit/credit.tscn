@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=3 uid="uid://02qpiuji4jhc"]
+
+[ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="1_8640v"]
+[ext_resource type="Script" path="res://menu/credit/credit.gd" id="2_03ki4"]
+[ext_resource type="Texture2D" uid="uid://cg7hau20aisek" path="res://logo/full_icon.png" id="2_uib7a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fsprh"]
+font_size = 41
+
+[sub_resource type="LabelSettings" id="LabelSettings_cyf1o"]
+font_size = 27
+
+[sub_resource type="Animation" id="Animation_2xx7l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(344, 856)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5mfaf"]
+resource_name = "start"
+length = 48.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(6.13333, 44.0333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(344, 856), Vector2(344, -584)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.466667, 3.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_11qge"]
+_data = {
+"RESET": SubResource("Animation_2xx7l"),
+"start": SubResource("Animation_5mfaf")
+}
+
+[node name="credit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8640v")
+script = ExtResource("2_03ki4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1288.0
+offset_bottom = 729.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 680.0
+offset_right = 243.0
+offset_bottom = 703.0
+theme = ExtResource("1_8640v")
+text = "Tekan apapun untuk ' SKIP '"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(344, 856)
+
+[node name="Label2" type="Label" parent="Node2D"]
+offset_left = -128.0
+offset_top = 920.0
+offset_right = 1242.0
+offset_bottom = 987.0
+theme = ExtResource("1_8640v")
+text = "Terima Kasih telah memainkan game kami"
+label_settings = SubResource("LabelSettings_fsprh")
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_top = -104.0
+offset_right = 602.0
+offset_bottom = 575.0
+theme = ExtResource("1_8640v")
+text = "Game Director
+Muhammad Farhad Ajilla
+
+Game Designer
+Rizki Fauzi
+
+Mentor
+ Alif Nimatulloh
+
+Game Programmer
+  Muhammad Farhad Ajilla
+  Raffi Fadhillah
+
+
+Illustrator
+  Muhammad Farhad Ajilla
+  Raffi Fadhillah
+
+
+Music & SFX
+  Muhammad Farhad Ajilla
+  Abdul Rafi"
+label_settings = SubResource("LabelSettings_cyf1o")
+horizontal_alignment = 1
+
+[node name="FullIcon" type="Sprite2D" parent="Node2D"]
+position = Vector2(296, -536)
+scale = Vector2(0.255556, 0.255556)
+texture = ExtResource("2_uib7a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_11qge")
+}
+autoplay = "start"
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1304.0
+offset_bottom = 744.0
+color = Color(0, 0, 0, 1)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

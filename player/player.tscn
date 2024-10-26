@@ -1,11 +1,10 @@
-[gd_scene load_steps=78 format=3 uid="uid://et4mwi4b2l3w"]
+[gd_scene load_steps=81 format=3 uid="uid://et4mwi4b2l3w"]
 
 [ext_resource type="Texture2D" uid="uid://1qcieda2t8ve" path="res://player/player.png" id="1_72phs"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_uk7lu"]
 [ext_resource type="PackedScene" uid="uid://cicux0f7842ku" path="res://player/player_1p.tscn" id="2_vnqi5"]
 [ext_resource type="PackedScene" uid="uid://du32mnelvpawi" path="res://player/ghost.tscn" id="2_x2nxy"]
 [ext_resource type="PackedScene" uid="uid://ckurri1eqd46s" path="res://user_interface/UI.tscn" id="3_1ug8a"]
-[ext_resource type="PackedScene" uid="uid://pkis2eg4jocv" path="res://menu/black_transisiton.tscn" id="4_5fcs6"]
 [ext_resource type="Script" path="res://user_interface/ui.gd" id="5_lxjxr"]
 [ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="6_vdy0p"]
 [ext_resource type="Texture2D" uid="uid://hssma2ppw2p1" path="res://menu/player/health.png" id="7_6an51"]
@@ -475,6 +474,58 @@ font_size = 27
 [sub_resource type="LabelSettings" id="LabelSettings_gfne2"]
 font_size = 21
 
+[sub_resource type="Animation" id="Animation_3fpol"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../user_interface/ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pval1"]
+resource_name = "quit_transisition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../user_interface/ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pycsc"]
+resource_name = "start_transisition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../user_interface/ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6rbo"]
+_data = {
+"RESET": SubResource("Animation_3fpol"),
+"quit_transisition": SubResource("Animation_pval1"),
+"start_transisition": SubResource("Animation_pycsc")
+}
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 128
 script = ExtResource("1_uk7lu")
@@ -669,7 +720,20 @@ text = "230"
 label_settings = SubResource("LabelSettings_vhq8k")
 horizontal_alignment = 1
 
-[node name="black_transisition" parent="." instance=ExtResource("4_5fcs6")]
+[node name="ColorRect2" type="ColorRect" parent="user_interface"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -182.0
+offset_top = -156.0
+offset_right = 1471.0
+offset_bottom = 892.0
+color = Color(0, 0, 0, 1)
+
+[node name="transition" type="AnimationPlayer" parent="."]
+root_node = NodePath("../SFX")
+libraries = {
+"": SubResource("AnimationLibrary_l6rbo")
+}
+autoplay = "start_transisition"
 
 [node name="SFX" type="Node" parent="."]
 

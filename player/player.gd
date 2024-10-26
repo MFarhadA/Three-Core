@@ -13,7 +13,7 @@ const JUMP_VELOCITY = -400.0
 @onready var timeDash = $Dash/TimerDash
 @onready var timeDashCD = $Dash/TimerDashCD
 @onready var timeDashing = $Dash/TimerDashInv
-@onready var transition = $black_transisition
+@onready var transition = $transition
 
 @onready var skill1cd = $Skill/TimerSkill1CD
 @onready var skill2cd = $Skill/TimerSkill2CD
@@ -34,8 +34,10 @@ var Dead : bool = false
 var combo = 0
 
 var isSkill2 : bool = false
+var Checkpoint
 
 func _ready() -> void:
+	Checkpoint = position
 	Global.playerBody = self
 
 func _physics_process(delta: float) -> void:
@@ -184,6 +186,20 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		_gameOver()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Checkpoint"):
+		Checkpoint = position
+	if area.is_in_group("Falling"):
+		health -= 1
+		if health > 0:
+			GlobalAudio.hurt.play()
+			_invisible()
+			position = Checkpoint
+		else:
+			Dead = true
+			hurtbox.disabled = true
+			GlobalAudio._death()
+			anim.play("death")
+
 	if not hurtbox.disabled and area.is_in_group("HitboxEnemies"):
 		health -= 1
 		if health > 0:

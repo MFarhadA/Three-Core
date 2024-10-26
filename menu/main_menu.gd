@@ -26,7 +26,7 @@ func _on_setting_button_pressed() -> void:
 
 func _on_credit_button_pressed() -> void:
 	await GlobalAudio._click().finished
-	Scene.go_to_main_menu()
+	get_tree().change_scene_to_packed(credit)
 
 func _on_quit_button_pressed() -> void:
 	await GlobalAudio._enemyDeath().finished

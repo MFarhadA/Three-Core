@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8vm0o1eujeas"]
+[gd_scene load_steps=9 format=3 uid="uid://c8vm0o1eujeas"]
 
 [ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="1_336yx"]
 [ext_resource type="Texture2D" uid="uid://cg7hau20aisek" path="res://logo/full_icon.png" id="1_uhbxu"]
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="2_0deaw"]
-[ext_resource type="PackedScene" uid="uid://dxrxg05aailc0" path="res://map/test_map.tscn" id="3_2c4xe"]
+[ext_resource type="PackedScene" uid="uid://cp4ofyvf4nggo" path="res://map/Genderuwo/GenderuwoLevel.tscn" id="3_tifnr"]
+[ext_resource type="PackedScene" uid="uid://02qpiuji4jhc" path="res://menu/credit/credit.tscn" id="4_dxeg7"]
 [ext_resource type="PackedScene" uid="uid://cbv0v1o853rl3" path="res://tileset/ParallaxBG.tscn" id="4_kin4o"]
 [ext_resource type="PackedScene" uid="uid://pkis2eg4jocv" path="res://menu/black_transisiton.tscn" id="5_1fdm7"]
 
@@ -19,7 +20,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_336yx")
 script = ExtResource("2_0deaw")
-start = ExtResource("3_2c4xe")
+start = ExtResource("3_tifnr")
+credit = ExtResource("4_dxeg7")
 
 [node name="ParallaxBG" parent="." instance=ExtResource("4_kin4o")]
 

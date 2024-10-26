@@ -12,6 +12,7 @@ transform = Transform2D(1, 0, 0, 1, 0, 25.59)
 [node name="parallax0" type="ParallaxLayer" parent="."]
 texture_filter = 1
 position = Vector2(0, 78)
+motion_scale = Vector2(1, 0)
 motion_mirroring = Vector2(720, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="parallax0"]
@@ -22,6 +23,7 @@ offset = Vector2(0, -50)
 [node name="parallax00" type="ParallaxLayer" parent="."]
 texture_filter = 1
 position = Vector2(0, 78)
+motion_scale = Vector2(1, 0)
 motion_mirroring = Vector2(720, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="parallax00"]
@@ -33,7 +35,7 @@ offset = Vector2(0, -50)
 [node name="parallax1" type="ParallaxLayer" parent="."]
 texture_filter = 1
 position = Vector2(0, 78)
-motion_scale = Vector2(0.25, 1)
+motion_scale = Vector2(0.25, 0)
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="parallax1"]
@@ -44,7 +46,7 @@ offset = Vector2(0, -50)
 [node name="parallax11" type="ParallaxLayer" parent="."]
 texture_filter = 1
 position = Vector2(620, 78)
-motion_scale = Vector2(0.25, 1)
+motion_scale = Vector2(0.25, 0)
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="parallax11"]
@@ -55,7 +57,7 @@ offset = Vector2(0, -50)
 [node name="parallax2" type="ParallaxLayer" parent="."]
 texture_filter = 1
 position = Vector2(0, 78)
-motion_scale = Vector2(0.5, 1)
+motion_scale = Vector2(0.5, 0)
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="parallax2"]
@@ -66,7 +68,7 @@ offset = Vector2(0, -50)
 [node name="parallax22" type="ParallaxLayer" parent="."]
 texture_filter = 1
 position = Vector2(720, 78)
-motion_scale = Vector2(0.5, 1)
+motion_scale = Vector2(0.5, 0)
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="parallax22"]
@@ -77,6 +79,7 @@ offset = Vector2(0, -50)
 [node name="parallax3" type="ParallaxLayer" parent="."]
 texture_filter = 1
 position = Vector2(0, 78)
+motion_scale = Vector2(1, 0)
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="parallax3"]
@@ -87,6 +90,7 @@ offset = Vector2(0, -50)
 [node name="parallax33" type="ParallaxLayer" parent="."]
 texture_filter = 1
 position = Vector2(720, 78)
+motion_scale = Vector2(1, 0)
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="parallax33"]

@@ -2,6 +2,7 @@ extends Node
 
 #music
 @onready var main_music = $Music/Mainmenu
+@onready var credit_music = $Music/Credit
 
 #sfx
 @onready var click = $SFX/click
@@ -14,6 +15,10 @@ extends Node
 func _main():
 	main_music.play()
 	return main_music
+
+func _credit():
+	credit_music.play()
+	return credit_music
 
 func _click():
 	click.play()

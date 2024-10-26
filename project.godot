@@ -39,6 +39,8 @@ window/vsync/vsync_mode=0
 HurtboxPlayer=""
 HitboxPlayer=""
 HitboxEnemies=""
+Falling=""
+Checkpoint=""
 
 [input]
 
