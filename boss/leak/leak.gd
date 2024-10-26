@@ -68,6 +68,7 @@ func _skill1():
 	await anim.animation_finished
 	hitbox.disabled = false
 	anim.play("skill11")
+	$Node/skill1.play()
 
 func _skill2():
 	anim.play("skill2")
@@ -82,16 +83,19 @@ func _skill2():
 		projectile2.scale.x = 1
 	get_tree().current_scene.add_child(projectile2)
 	anim.play("skill22")
+	$Node/skill2.play()
 
 func _skill3():
 	var original_pos = position
 	var target_pos = position + Vector2(0, -100)
 	anim.play("skill3")
+	$Node/skill3.play()
 	while position.y > target_pos.y + 1:
 		position.y = lerp(position.y, target_pos.y, move_speed * get_process_delta_time())
 		await get_tree().create_timer(0.01).timeout
 	_skill3p()
 	anim.play("skill33")
+	$Node/skill2.play()
 	await anim.animation_finished
 	while position.y < original_pos.y - 1:
 		position.y = lerp(position.y, original_pos.y, move_speed * get_process_delta_time())
@@ -113,9 +117,12 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		tween.tween_property(self, "modulate", end_color, 0.05)
 		tween.tween_property(self, "modulate", start_color, 0.05).set_delay(0.05)
 		health -= 1
+		if health > 0:
+			GlobalAudio._hurt()
 
 func _death():
 	Dead = true
+	GlobalAudio._enemyDeath()
 	anim.play("death")
 
 func _on_animated_sprite_2d_animation_finished() -> void:

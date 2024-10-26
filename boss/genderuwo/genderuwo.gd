@@ -26,6 +26,7 @@ func _physics_process(delta: float) -> void:
 	if isJump:
 		hitbox2.disabled = false
 		if is_on_floor():
+			$Node/Skill33.play()
 			anim.play("idle")
 			velocity.x = 0
 			isJump = false
@@ -90,6 +91,7 @@ func _skill1():
 	await anim.animation_finished
 	hitbox.disabled = false
 	anim.play("skill11")
+	$Node/Skill1.play()
 
 func _skill2():
 	anim.play("skill2")
@@ -104,10 +106,12 @@ func _skill2():
 		projectile2.scale.x = 1
 	get_tree().current_scene.add_child(projectile2)
 	anim.play("skill22")
+	$Node/Skill2.play()
 	hitbox2.disabled = false
 
 func _skill3():
 	anim.play("skill3")
+	$Node/Skill3.play()
 	var dir_player = position.direction_to(player.position)
 	velocity.x = dir_player.x * chaseSPEED
 	velocity.y = JUMP_VELOCITY
@@ -122,9 +126,12 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		tween.tween_property(self, "modulate", end_color, 0.05)
 		tween.tween_property(self, "modulate", start_color, 0.05).set_delay(0.05)
 		health -= 1
+		if health > 0:
+			GlobalAudio._hurt()
 
 func _death():
 	Dead = true
+	GlobalAudio._enemyDeath()
 	anim.play("death")
 
 func _on_animated_sprite_2d_animation_finished() -> void:

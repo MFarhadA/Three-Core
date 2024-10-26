@@ -1,9 +1,12 @@
-[gd_scene load_steps=51 format=3 uid="uid://c7pikon8fqtc2"]
+[gd_scene load_steps=54 format=3 uid="uid://c7pikon8fqtc2"]
 
 [ext_resource type="Texture2D" uid="uid://dpbe1vashe2v6" path="res://boss/leak/leak.png" id="1_0vren"]
 [ext_resource type="Script" path="res://boss/leak/leak.gd" id="1_jwu4b"]
 [ext_resource type="PackedScene" uid="uid://b1xanvxr52u2h" path="res://boss/leak/leak_2p.tscn" id="2_qck3k"]
 [ext_resource type="PackedScene" uid="uid://dlal0ot03b0nh" path="res://boss/leak/leak_3p.tscn" id="3_17x0h"]
+[ext_resource type="AudioStream" uid="uid://ioh72cugpnn0" path="res://audio/sfx/basic.mp3" id="5_34pdy"]
+[ext_resource type="AudioStream" uid="uid://dgunjr4dj3l2" path="res://audio/sfx/spell.mp3" id="6_14rd2"]
+[ext_resource type="AudioStream" uid="uid://dta4vehtl1kiy" path="res://audio/sfx/hurt.mp3" id="6_w7i2i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8g18"]
 atlas = ExtResource("1_0vren")
@@ -416,6 +419,24 @@ disabled = true
 
 [node name="TimerSkill" type="Timer" parent="."]
 one_shot = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="skill1" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("5_34pdy")
+pitch_scale = 1.51
+bus = &"SFX"
+
+[node name="skill2" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("6_w7i2i")
+pitch_scale = 0.28
+bus = &"SFX"
+
+[node name="skill3" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("6_14rd2")
+volume_db = 6.559
+pitch_scale = 0.86
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

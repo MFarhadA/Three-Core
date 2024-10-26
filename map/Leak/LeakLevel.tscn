@@ -36,7 +36,7 @@ tile_map_data = PackedByteArray("AAAAABQAAAAGAAMAAAABABQAAAAHAAMAAAACABQAAAAHAAM
 tile_set = ExtResource("3_cd7ks")
 
 [node name="Player" parent="." instance=ExtResource("4_dvfn5")]
-position = Vector2(6712, 632)
+position = Vector2(7032, 632)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -72)
@@ -81,7 +81,7 @@ position = Vector2(-6224, -352)
 shape = SubResource("RectangleShape2D_icmvl")
 
 [node name="CameraBoss" type="Camera2D" parent="."]
-position = Vector2(7504, 672)
+position = Vector2(7504, 704)
 
 [node name="Node" type="Node2D" parent="."]
 

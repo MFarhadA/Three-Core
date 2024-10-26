@@ -1,8 +1,11 @@
-[gd_scene load_steps=47 format=3 uid="uid://cay66p48207g3"]
+[gd_scene load_steps=50 format=3 uid="uid://cay66p48207g3"]
 
 [ext_resource type="Script" path="res://boss/genderuwo/genderuwo.gd" id="1_j7ftm"]
 [ext_resource type="Texture2D" uid="uid://eevu4omeyiwi" path="res://boss/genderuwo/genderuwo.png" id="1_tc16l"]
 [ext_resource type="PackedScene" uid="uid://eogif4qypcwb" path="res://boss/genderuwo/genderuwo_2p.tscn" id="2_fv1mu"]
+[ext_resource type="AudioStream" uid="uid://ioh72cugpnn0" path="res://audio/sfx/basic.mp3" id="4_16lbu"]
+[ext_resource type="AudioStream" uid="uid://byo5hnj7lspid" path="res://audio/sfx/dash.mp3" id="4_ips71"]
+[ext_resource type="AudioStream" uid="uid://cdbn8p36bigl0" path="res://audio/sfx/jump.mp3" id="5_j2wc5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_41uds"]
 atlas = ExtResource("1_tc16l")
@@ -379,6 +382,27 @@ shape = SubResource("RectangleShape2D_fd6p5")
 
 [node name="TimerSkill" type="Timer" parent="."]
 one_shot = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Skill1" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("4_16lbu")
+pitch_scale = 0.64
+bus = &"SFX"
+
+[node name="Skill2" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("4_ips71")
+pitch_scale = 1.56
+bus = &"SFX"
+
+[node name="Skill3" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("5_j2wc5")
+pitch_scale = 0.53
+bus = &"SFX"
+
+[node name="Skill33" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("4_ips71")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

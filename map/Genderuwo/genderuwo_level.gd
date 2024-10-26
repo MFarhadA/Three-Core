@@ -26,7 +26,6 @@ func _on_boss_time_area_entered(area: Area2D) -> void:
 		boss_area_entered = true
 		GlobalAudio._map().stop()
 		$Genderuwo.play()
-		print("boss")
 		$Player/Camera2D.enabled = false
 		$CameraBoss.enabled = true
 		if $genderuwo != null:

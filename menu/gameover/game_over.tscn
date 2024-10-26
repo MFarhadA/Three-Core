@@ -119,7 +119,6 @@ text = "[ kembali ke menu utama ]"
 label_settings = SubResource("LabelSettings_t7ijp")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1296.0
 offset_bottom = 744.0
