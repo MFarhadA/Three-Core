@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=3 uid="uid://lbni43rxi7l"]
+
+[ext_resource type="Script" path="res://menu/gameover/game_over.gd" id="1_35a3r"]
+[ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="1_dhx3b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4mq2b"]
+font_size = 125
+
+[sub_resource type="Animation" id="Animation_ncadc"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0xcnj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_f65u3"]
+resource_name = "next"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s4st5"]
+_data = {
+"RESET": SubResource("Animation_0xcnj"),
+"next": SubResource("Animation_f65u3"),
+"start": SubResource("Animation_ncadc")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_t7ijp"]
+font_size = 24
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_35a3r")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1296.0
+offset_bottom = 729.0
+color = Color(0.43, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 264.0
+offset_top = 304.0
+offset_right = 1022.0
+offset_bottom = 430.0
+theme = ExtResource("1_dhx3b")
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_4mq2b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s4st5")
+}
+autoplay = "start"
+
+[node name="Label2" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 488.0
+offset_top = 664.0
+offset_right = 797.0
+offset_bottom = 688.0
+theme = ExtResource("1_dhx3b")
+text = "[ kembali ke menu utama ]"
+label_settings = SubResource("LabelSettings_t7ijp")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1296.0
+offset_bottom = 744.0
+color = Color(0, 0, 0, 1)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=81 format=3 uid="uid://et4mwi4b2l3w"]
+[gd_scene load_steps=82 format=3 uid="uid://et4mwi4b2l3w"]
 
 [ext_resource type="Texture2D" uid="uid://1qcieda2t8ve" path="res://player/player.png" id="1_72phs"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_uk7lu"]
 [ext_resource type="PackedScene" uid="uid://cicux0f7842ku" path="res://player/player_1p.tscn" id="2_vnqi5"]
 [ext_resource type="PackedScene" uid="uid://du32mnelvpawi" path="res://player/ghost.tscn" id="2_x2nxy"]
 [ext_resource type="PackedScene" uid="uid://ckurri1eqd46s" path="res://user_interface/UI.tscn" id="3_1ug8a"]
+[ext_resource type="PackedScene" uid="uid://lbni43rxi7l" path="res://menu/gameover/game_over.tscn" id="4_q5dxk"]
 [ext_resource type="Script" path="res://user_interface/ui.gd" id="5_lxjxr"]
 [ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="6_vdy0p"]
 [ext_resource type="Texture2D" uid="uid://hssma2ppw2p1" path="res://menu/player/health.png" id="7_6an51"]
@@ -531,6 +532,7 @@ collision_layer = 128
 script = ExtResource("1_uk7lu")
 skill1p = ExtResource("2_vnqi5")
 ghost_node = ExtResource("2_x2nxy")
+game_over = ExtResource("4_q5dxk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

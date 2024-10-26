@@ -14,7 +14,7 @@ extends CanvasLayer
 
 func _process(delta: float) -> void:
 	
-	$up1.text = str(player.health)
+	$up1.text = str(player.revive)
 	$health1.text = str(player.health)
 	
 	_cooldown(skill1cd, skill1text)

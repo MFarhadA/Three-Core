@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-var health = 2
+var revive = 2
+var health = 3
 
 const SPEED = 150.0
 const dashSPEED = 1000.0
@@ -25,6 +26,7 @@ var isskill3cd : bool = false
 
 @export var skill1p : PackedScene
 @export var ghost_node : PackedScene
+@export var game_over : PackedScene
 
 var isAttacking : bool = false
 var isDashCD : bool = false
@@ -195,10 +197,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			_invisible()
 			position = Checkpoint
 		else:
-			Dead = true
-			hurtbox.disabled = true
-			GlobalAudio._death()
-			anim.play("death")
+			_revive()
 
 	if not hurtbox.disabled and area.is_in_group("HitboxEnemies"):
 		health -= 1
@@ -206,15 +205,24 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			GlobalAudio.hurt.play()
 			_invisible()
 		else:
-			Dead = true
-			hurtbox.disabled = true
-			GlobalAudio._death()
-			anim.play("death")
+			_revive()
 
 func _gameOver():
 	transition.play("quit_transisition")
 	await transition.animation_finished
-	SceneManager.go_to_main_menu()
+	get_tree().change_scene_to_packed(game_over)
+
+func _revive():
+	revive -= 1
+	if revive > 0:
+		health = 3
+		_invisible()
+		position = Checkpoint
+	else:
+		Dead = true
+		hurtbox.disabled = true
+		GlobalAudio._death()
+		anim.play("death")
 
 func _invisible():
 	hurtbox.disabled = true
