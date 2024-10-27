@@ -100,9 +100,9 @@ text = "Tekan apapun untuk ' SKIP '"
 position = Vector2(344, 856)
 
 [node name="Label2" type="Label" parent="Node2D"]
-offset_left = -128.0
+offset_left = -101.0
 offset_top = 920.0
-offset_right = 1242.0
+offset_right = 701.0
 offset_bottom = 987.0
 theme = ExtResource("1_8640v")
 text = "Terima Kasih telah memainkan game kami"

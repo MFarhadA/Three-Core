@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://6y57qymcb536"]
+
+[ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="1_0t8hn"]
+[ext_resource type="Script" path="res://menu/setting/music.gd" id="1_8vjqg"]
+[ext_resource type="Script" path="res://menu/setting/setting.gd" id="2_jmc7b"]
+[ext_resource type="Script" path="res://menu/setting/sfx.gd" id="3_cafj4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4hu8i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5rpg"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7267q"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70vf0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_07w6e"]
+CheckButton/font_sizes/font_size = 16
+CheckButton/styles/disabled = SubResource("StyleBoxFlat_q5rpg")
+CheckButton/styles/focus = SubResource("StyleBoxFlat_q5rpg")
+CheckButton/styles/hover = SubResource("StyleBoxFlat_q5rpg")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_7267q")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_7267q")
+CheckButton/styles/pressed = SubResource("StyleBoxFlat_70vf0")
+
+[node name="Setting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0t8hn")
+script = ExtResource("2_jmc7b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 248.0
+offset_right = 644.0
+offset_bottom = 350.0
+scale = Vector2(2, 2)
+alignment = 1
+
+[node name="Music2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_0t8hn")
+text = "Musik"
+label_settings = SubResource("LabelSettings_4hu8i")
+horizontal_alignment = 1
+
+[node name="Music" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_0t8hn")
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_8vjqg")
+bus_name = "Music"
+
+[node name="sfx2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_0t8hn")
+text = "Efek Suara"
+label_settings = SubResource("LabelSettings_4hu8i")
+horizontal_alignment = 1
+
+[node name="sfx" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_0t8hn")
+max_value = 1.0
+step = 0.001
+script = ExtResource("3_cafj4")
+bus_name = "SFX"
+
+[node name="tutorial" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_07w6e")
+text = "Skip Tutorial"
+alignment = 1
+
+[connection signal="toggled" from="VBoxContainer/tutorial" to="." method="_on_tutorial_toggled"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://du32mnelvpawi"]
 
 [ext_resource type="Texture2D" uid="uid://bwf6mfi2eitua" path="res://player/dash.png" id="1_xin11"]
-[ext_resource type="Script" path="res://ghost.gd" id="2_inw8e"]
+[ext_resource type="Script" path="res://player/ghost.gd" id="2_inw8e"]
 
 [node name="Ghost" type="Sprite2D"]
 modulate = Color(0.237492, 0.54029, 0.679252, 0.556863)

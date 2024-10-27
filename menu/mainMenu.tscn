@@ -1,12 +1,138 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8vm0o1eujeas"]
+[gd_scene load_steps=15 format=3 uid="uid://c8vm0o1eujeas"]
 
 [ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="1_336yx"]
 [ext_resource type="Texture2D" uid="uid://cg7hau20aisek" path="res://logo/full_icon.png" id="1_uhbxu"]
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="2_0deaw"]
 [ext_resource type="PackedScene" uid="uid://cp4ofyvf4nggo" path="res://map/Genderuwo/GenderuwoLevel.tscn" id="3_tifnr"]
 [ext_resource type="PackedScene" uid="uid://02qpiuji4jhc" path="res://menu/credit/credit.tscn" id="4_dxeg7"]
+[ext_resource type="PackedScene" uid="uid://sl64y3rve4iw" path="res://map/Leak/LeakLevel.tscn" id="4_js1yu"]
 [ext_resource type="PackedScene" uid="uid://cbv0v1o853rl3" path="res://tileset/ParallaxBG.tscn" id="4_kin4o"]
 [ext_resource type="PackedScene" uid="uid://pkis2eg4jocv" path="res://menu/black_transisiton.tscn" id="5_1fdm7"]
+[ext_resource type="PackedScene" uid="uid://6y57qymcb536" path="res://menu/setting/setting.tscn" id="8_nfbba"]
+
+[sub_resource type="Animation" id="Animation_rkdya"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Setting:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1280, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../FullIcon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(639, 252)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../VBoxContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(505, 407)]
+}
+
+[sub_resource type="Animation" id="Animation_ohd1w"]
+resource_name = "setting_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Setting:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(1280, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../FullIcon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(639, 252), Vector2(-639.778, 252)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../VBoxContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(505, 407), Vector2(-773.778, 407)]
+}
+
+[sub_resource type="Animation" id="Animation_tbaat"]
+resource_name = "setting_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Setting:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1280, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../FullIcon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(-639.778, 252), Vector2(639, 252)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../VBoxContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(-773.778, 407), Vector2(505, 407)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ei038"]
+_data = {
+"RESET": SubResource("Animation_rkdya"),
+"setting_in": SubResource("Animation_ohd1w"),
+"setting_out": SubResource("Animation_tbaat")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_swes6"]
 font_size = 24
@@ -21,6 +147,8 @@ grow_vertical = 2
 theme = ExtResource("1_336yx")
 script = ExtResource("2_0deaw")
 start = ExtResource("3_tifnr")
+start1 = ExtResource("4_js1yu")
+setting = ExtResource("8_nfbba")
 credit = ExtResource("4_dxeg7")
 
 [node name="ParallaxBG" parent="." instance=ExtResource("4_kin4o")]
@@ -92,6 +220,12 @@ text = "KELUAR"
 
 [node name="black_transisition" parent="." instance=ExtResource("5_1fdm7")]
 
+[node name="menu" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Label")
+libraries = {
+"": SubResource("AnimationLibrary_ei038")
+}
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 35.0
@@ -102,7 +236,22 @@ theme = ExtResource("1_336yx")
 text = "v 0.2 - demo"
 label_settings = SubResource("LabelSettings_swes6")
 
+[node name="Setting" parent="." instance=ExtResource("8_nfbba")]
+layout_mode = 1
+offset_left = 1280.0
+offset_right = 1280.0
+
+[node name="backSetting" type="Button" parent="Setting"]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 463.0
+offset_right = 680.0
+offset_bottom = 487.0
+scale = Vector2(1.5, 1.5)
+text = "[ KEMBALI ]"
+
 [connection signal="pressed" from="VBoxContainer/startButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/settingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/creditButton" to="." method="_on_credit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/exitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Setting/backSetting" to="." method="_on_back_setting_pressed"]

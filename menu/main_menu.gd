@@ -1,6 +1,7 @@
 extends Control
 
 @export var start : PackedScene
+@export var start1 : PackedScene
 @export var setting : PackedScene
 @export var credit : PackedScene
 @export var quit : PackedScene
@@ -18,11 +19,14 @@ func _on_start_button_pressed() -> void:
 	$black_transisition.play("quit_transisition")
 	await $black_transisition.animation_finished
 	GlobalAudio._main().stop()
-	get_tree().change_scene_to_packed(start)
+	if Save.skipTutorial == true:
+		get_tree().change_scene_to_packed(start)
+	else:
+		get_tree().change_scene_to_packed(start1)
 
 func _on_setting_button_pressed() -> void:
-	await GlobalAudio._click().finished
-	Scene.go_to_main_menu()
+	GlobalAudio._click()
+	$menu.play("setting_in")
 
 func _on_credit_button_pressed() -> void:
 	await GlobalAudio._click().finished
@@ -31,3 +35,8 @@ func _on_credit_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	await GlobalAudio._enemyDeath().finished
 	get_tree().quit()
+
+func _on_back_setting_pressed() -> void:
+	GlobalAudio._click()
+	await GlobalAudio._click().finished
+	$menu.play("setting_out")
