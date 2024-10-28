@@ -64,7 +64,7 @@ tile_set = ExtResource("1_bma8m")
 [node name="ParallaxBG" parent="." instance=ExtResource("4_th7ag")]
 
 [node name="Player" parent="." instance=ExtResource("2_qhuml")]
-position = Vector2(6632, 2168)
+position = Vector2(400, 304)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, 16)
