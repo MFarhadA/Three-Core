@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 20
+@export var health = 20
 
 var move_speed : float = 100.0
 
@@ -15,6 +15,8 @@ var Dead : bool = false
 @export var skill2p : PackedScene
 @export var skill3p : PackedScene
 var player : CharacterBody2D
+
+@export var next : PackedScene
 
 func _physics_process(delta: float) -> void:
 	if Global.playerBody != null:
@@ -119,14 +121,18 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		health -= 1
 		if health > 0:
 			GlobalAudio._hurt()
+		else:
+			GlobalAudio._enemyDeath()
 
 func _death():
 	Dead = true
-	GlobalAudio._enemyDeath()
 	anim.play("death")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if anim.animation == "death": queue_free()
+	if anim.animation == "death":
+		queue_free()
+		Save.LeakDead = true
+		get_tree().change_scene_to_packed(load("res://menu/listLevel/list_level.tscn"))
 	if anim.animation == "skill11":
 		hitbox.disabled = true
 		isAttacking = false

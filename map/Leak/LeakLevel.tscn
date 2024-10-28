@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://sl64y3rve4iw"]
+[gd_scene load_steps=16 format=4 uid="uid://sl64y3rve4iw"]
 
 [ext_resource type="Script" path="res://map/Leak/LeakLevel.gd" id="1_rt7ir"]
+[ext_resource type="PackedScene" uid="uid://cdx04q31yfof8" path="res://menu/listLevel/list_level.tscn" id="2_ijsaw"]
 [ext_resource type="TileSet" uid="uid://byaxwedrbiphm" path="res://tileset/tilesetBG.tres" id="2_xrsuo"]
 [ext_resource type="TileSet" uid="uid://belfx0ft58xvs" path="res://map/test_map.tres" id="3_cd7ks"]
 [ext_resource type="PackedScene" uid="uid://et4mwi4b2l3w" path="res://player/player.tscn" id="4_dvfn5"]
@@ -36,7 +37,7 @@ tile_map_data = PackedByteArray("AAAAABQAAAAGAAMAAAABABQAAAAHAAMAAAACABQAAAAHAAM
 tile_set = ExtResource("3_cd7ks")
 
 [node name="Player" parent="." instance=ExtResource("4_dvfn5")]
-position = Vector2(376, 248)
+position = Vector2(368, 248)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -72)
@@ -158,6 +159,7 @@ position = Vector2(3544, 552)
 
 [node name="leak" parent="." instance=ExtResource("9_h2tv7")]
 position = Vector2(7512, 864)
+next = ExtResource("2_ijsaw")
 
 [node name="Leak" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_ttofq")

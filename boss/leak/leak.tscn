@@ -379,6 +379,7 @@ size = Vector2(106, 140)
 show_behind_parent = true
 collision_layer = 64
 script = ExtResource("1_jwu4b")
+health = 40
 skill2p = ExtResource("2_qck3k")
 skill3p = ExtResource("3_17x0h")
 
@@ -386,7 +387,7 @@ skill3p = ExtResource("3_17x0h")
 texture_filter = 1
 position = Vector2(-8, 0)
 sprite_frames = SubResource("SpriteFrames_b8fgt")
-animation = &"skill33"
+animation = &"death"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

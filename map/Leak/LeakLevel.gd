@@ -1,6 +1,7 @@
 extends Node2D
 
 var boss_area_entered = false
+var next : PackedScene
 
 func _ready():
 	GlobalAudio._map()
@@ -18,6 +19,12 @@ func _ready():
 	$TileMapLayer.modulate = Color(0.6, 0.21, 0.15)
 	
 	$ParallaxBG.offset.y = -200
+	
+	
+#func _process(delta: float) -> void:
+#	print(Save.LeakDead)
+#	if Save.LeakDead == true:
+#		get_tree().change_scene_to_packed(load("res://menu/listLevel/list_level.tscn"))
 
 func _modulate(layer):
 	layer.modulate = Color(0.44, 0.154, 0.11)
@@ -28,7 +35,6 @@ func _on_boss_time_area_entered(area: Area2D) -> void:
 		GlobalAudio._map().stop()
 		$Leak.play()
 		$ParallaxBG.offset.y = 30
-		print("boss")
 		$Player/Camera2D.enabled = false
 		$CameraBoss.enabled = true
 		if $leak != null:

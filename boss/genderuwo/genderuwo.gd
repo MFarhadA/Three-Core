@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 40
+@export var health = 40
 
 var chaseSPEED : float = 200.0
 var JUMP_VELOCITY = -600.0
@@ -128,10 +128,13 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		health -= 1
 		if health > 0:
 			GlobalAudio._hurt()
+		else:
+			GlobalAudio._enemyDeath()
 
 func _death():
 	Dead = true
 	GlobalAudio._enemyDeath()
+	Save.GenderuwoDead = true
 	anim.play("death")
 
 func _on_animated_sprite_2d_animation_finished() -> void:

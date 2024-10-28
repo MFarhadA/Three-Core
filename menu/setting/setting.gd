@@ -6,3 +6,4 @@ func _on_tutorial_toggled(toggled_on: bool) -> void:
 		Save.skipTutorial = true
 	else:
 		Save.skipTutorial = false
+	print("Save.skipTutorial:", Save.skipTutorial)

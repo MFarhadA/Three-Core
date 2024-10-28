@@ -3,9 +3,9 @@
 [ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="1_336yx"]
 [ext_resource type="Texture2D" uid="uid://cg7hau20aisek" path="res://logo/full_icon.png" id="1_uhbxu"]
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="2_0deaw"]
-[ext_resource type="PackedScene" uid="uid://cp4ofyvf4nggo" path="res://map/Genderuwo/GenderuwoLevel.tscn" id="3_tifnr"]
+[ext_resource type="PackedScene" uid="uid://0tm10xrkitfu" path="res://map/tutorial.tscn" id="3_mei7a"]
+[ext_resource type="PackedScene" uid="uid://cdx04q31yfof8" path="res://menu/listLevel/list_level.tscn" id="4_aixer"]
 [ext_resource type="PackedScene" uid="uid://02qpiuji4jhc" path="res://menu/credit/credit.tscn" id="4_dxeg7"]
-[ext_resource type="PackedScene" uid="uid://sl64y3rve4iw" path="res://map/Leak/LeakLevel.tscn" id="4_js1yu"]
 [ext_resource type="PackedScene" uid="uid://cbv0v1o853rl3" path="res://tileset/ParallaxBG.tscn" id="4_kin4o"]
 [ext_resource type="PackedScene" uid="uid://pkis2eg4jocv" path="res://menu/black_transisiton.tscn" id="5_1fdm7"]
 [ext_resource type="PackedScene" uid="uid://6y57qymcb536" path="res://menu/setting/setting.tscn" id="8_nfbba"]
@@ -146,8 +146,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_336yx")
 script = ExtResource("2_0deaw")
-start = ExtResource("3_tifnr")
-start1 = ExtResource("4_js1yu")
+start = ExtResource("4_aixer")
+start1 = ExtResource("3_mei7a")
 setting = ExtResource("8_nfbba")
 credit = ExtResource("4_dxeg7")
 

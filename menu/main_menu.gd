@@ -38,5 +38,6 @@ func _on_quit_button_pressed() -> void:
 
 func _on_back_setting_pressed() -> void:
 	GlobalAudio._click()
+	print("Save.skipTutorial:", Save.skipTutorial)
 	await GlobalAudio._click().finished
 	$menu.play("setting_out")

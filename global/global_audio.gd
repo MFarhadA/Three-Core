@@ -5,6 +5,7 @@ extends Node
 @onready var credit_music = $Music/Credit
 @onready var game_over = $Music/Gameover
 @onready var map_music = $Music/Map
+@onready var tutorial_music = $Music/Tutorial
 #sfx
 @onready var click = $SFX/click
 @onready var hurt = $SFX/Hurt
@@ -16,18 +17,19 @@ extends Node
 func _main():
 	main_music.play()
 	return main_music
-
 func _credit():
 	credit_music.play()
 	return credit_music
-
 func _game_over():
 	game_over.play()
 	return game_over
-
 func _map():
 	map_music.play()
 	return map_music
+func _tutorial():
+	tutorial_music.play()
+	return tutorial_music
+
 
 func _click():
 	click.play()

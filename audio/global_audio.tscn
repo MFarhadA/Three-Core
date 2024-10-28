@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnh8rsexj36ch"]
+[gd_scene load_steps=13 format=3 uid="uid://dnh8rsexj36ch"]
 
 [ext_resource type="Script" path="res://global/global_audio.gd" id="1_n3uph"]
 [ext_resource type="AudioStream" uid="uid://crarfsgy0foe6" path="res://audio/music/mainmenu.mp3" id="2_rkgwo"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cdbn8p36bigl0" path="res://audio/sfx/jump.mp3" id="5_acved"]
 [ext_resource type="AudioStream" uid="uid://gn515elete3w" path="res://audio/music/map.mp3" id="5_uqved"]
 [ext_resource type="AudioStream" uid="uid://d050c8aw6uwkc" path="res://audio/sfx/deathEnemy.mp3" id="6_owk7g"]
+[ext_resource type="AudioStream" uid="uid://b1oao2pvy1t0k" path="res://audio/music/tutorial.mp3" id="6_sylhk"]
 [ext_resource type="AudioStream" uid="uid://br4vh8ibjuaaw" path="res://audio/sfx/shoot.mp3" id="7_wc1yc"]
 [ext_resource type="AudioStream" uid="uid://fpcvb7uel36b" path="res://audio/sfx/death.mp3" id="8_8g6wi"]
 
@@ -31,6 +32,11 @@ bus = &"Music"
 
 [node name="Map" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("5_uqved")
+bus = &"Music"
+
+[node name="Tutorial" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("6_sylhk")
+volume_db = -7.495
 bus = &"Music"
 
 [node name="SFX" type="Node" parent="."]

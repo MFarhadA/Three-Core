@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 20
+@export var health = 20
 
 var move_speed : float = 100.0
 
@@ -133,9 +133,14 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		tween.tween_property(self, "modulate", end_color, 0.05)
 		tween.tween_property(self, "modulate", start_color, 0.05).set_delay(0.05)
 		health -= 1
+		if health > 0:
+			GlobalAudio._hurt()
+		else:
+			GlobalAudio._enemyDeath()
 
 func _death():
 	Dead = true
+	Save.LamporDead = true
 	anim.play("death")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
