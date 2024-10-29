@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://et4mwi4b2l3w"]
+[gd_scene load_steps=86 format=3 uid="uid://et4mwi4b2l3w"]
 
 [ext_resource type="Texture2D" uid="uid://1qcieda2t8ve" path="res://player/player.png" id="1_72phs"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_uk7lu"]
@@ -10,12 +10,14 @@
 [ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="6_vdy0p"]
 [ext_resource type="Texture2D" uid="uid://hssma2ppw2p1" path="res://menu/player/health.png" id="7_6an51"]
 [ext_resource type="Texture2D" uid="uid://cejo3myy77f4h" path="res://menu/player/Skill.png" id="8_egrg3"]
+[ext_resource type="PackedScene" uid="uid://o7531a32rdcl" path="res://menu/pause/pause.tscn" id="8_gv31e"]
 [ext_resource type="Texture2D" uid="uid://dq2bu7y5lu04h" path="res://menu/player/up.png" id="8_jj24f"]
 [ext_resource type="AudioStream" uid="uid://byo5hnj7lspid" path="res://audio/sfx/dash.mp3" id="9_1f6y0"]
 [ext_resource type="AudioStream" uid="uid://bx2wkffgjm1h7" path="res://audio/sfx/heal.mp3" id="9_4kwxa"]
 [ext_resource type="AudioStream" uid="uid://d050c8aw6uwkc" path="res://audio/sfx/deathEnemy.mp3" id="9_7kft1"]
 [ext_resource type="AudioStream" uid="uid://ioh72cugpnn0" path="res://audio/sfx/basic.mp3" id="9_cxnif"]
 [ext_resource type="AudioStream" uid="uid://dtw3odeu4aqpr" path="res://audio/sfx/click.mp3" id="10_mfoa1"]
+[ext_resource type="Texture2D" uid="uid://vj0gg5r6k2r6" path="res://menu/pause/pause.png" id="12_0k00v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqpk4"]
 atlas = ExtResource("1_72phs")
@@ -475,6 +477,9 @@ font_size = 27
 [sub_resource type="LabelSettings" id="LabelSettings_gfne2"]
 font_size = 21
 
+[sub_resource type="LabelSettings" id="LabelSettings_u5etq"]
+font_size = 1300
+
 [sub_resource type="Animation" id="Animation_3fpol"]
 length = 0.001
 tracks/0/type = "value"
@@ -645,6 +650,11 @@ one_shot = true
 [node name="TimerDashCD" type="Timer" parent="Dash"]
 one_shot = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Pause2" parent="CanvasLayer" instance=ExtResource("8_gv31e")]
+
 [node name="user_interface" parent="." instance=ExtResource("3_1ug8a")]
 script = ExtResource("5_lxjxr")
 
@@ -772,9 +782,32 @@ text = "230"
 label_settings = SubResource("LabelSettings_vhq8k")
 horizontal_alignment = 1
 
+[node name="Pause" type="Sprite2D" parent="user_interface"]
+z_index = 100
+texture_filter = 1
+position = Vector2(65, 49)
+scale = Vector2(0.012859, 0.012859)
+texture = ExtResource("12_0k00v")
+
+[node name="Label" type="Label" parent="user_interface/Pause"]
+z_index = 100
+anchors_preset = -1
+anchor_left = 0.832421
+anchor_top = 0.904894
+anchor_right = 1.2712
+anchor_bottom = 1.06682
+offset_left = -2379.48
+offset_top = -3192.07
+offset_right = -1340.48
+offset_bottom = -3158.07
+theme = ExtResource("6_vdy0p")
+text = "ESCAPE"
+label_settings = SubResource("LabelSettings_u5etq")
+metadata/_edit_use_anchors_ = true
+
 [node name="red" type="ColorRect" parent="user_interface"]
 modulate = Color(0, 0, 0, 0)
-z_index = 100
+z_index = 1000
 offset_left = -182.0
 offset_top = -156.0
 offset_right = 1515.0
@@ -783,10 +816,11 @@ color = Color(0.431373, 0, 0, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="user_interface"]
 modulate = Color(1, 1, 1, 0)
-offset_left = -182.0
-offset_top = -156.0
-offset_right = 1471.0
-offset_bottom = 892.0
+z_index = 1000
+offset_left = -119.0
+offset_top = -140.0
+offset_right = 1534.0
+offset_bottom = 908.0
 color = Color(0, 0, 0, 1)
 
 [node name="transition" type="AnimationPlayer" parent="."]

@@ -1,0 +1,14 @@
+CollisionShape2D
+Area2D
+Label
+Control
+Camera2D
+TileMapLayer
+Node2D
+CanvasLayer
+Sprite2D
+ColorRect
+LightOccluder2D
+Button
+AnimationPlayer
+HBoxContainer

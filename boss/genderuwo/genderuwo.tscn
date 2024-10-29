@@ -345,6 +345,7 @@ size = Vector2(98, 272)
 show_behind_parent = true
 collision_layer = 64
 script = ExtResource("1_j7ftm")
+health = 50
 skill2p = ExtResource("2_fv1mu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

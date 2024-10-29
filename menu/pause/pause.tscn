@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://o7531a32rdcl"]
+
+[ext_resource type="Script" path="res://menu/pause/pause.gd" id="1_j6ous"]
+[ext_resource type="Theme" uid="uid://d1vxaagqymyh5" path="res://menu/main_menu.tres" id="2_ldout"]
+[ext_resource type="Theme" uid="uid://jd8vb155y5vx" path="res://menu/pause/pause.tres" id="3_2hg5h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gjdse"]
+font_size = 50
+
+[node name="Pause" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j6ous")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -701.0
+offset_top = -98.0
+offset_right = 701.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+top_level = true
+layout_mode = 0
+offset_left = 549.0
+offset_top = 195.0
+offset_right = 730.0
+offset_bottom = 243.0
+theme = ExtResource("2_ldout")
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_gjdse")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -62.0
+offset_right = -50.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+theme = ExtResource("3_2hg5h")
+alignment = 1
+
+[node name="resume" type="Button" parent="HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+focus_neighbor_top = NodePath("../quit")
+focus_neighbor_bottom = NodePath("../quit")
+text = "LANJUTKAN"
+
+[node name="quit" type="Button" parent="HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+focus_neighbor_top = NodePath("../resume")
+focus_neighbor_bottom = NodePath("../resume")
+text = "KELUAR"
+
+[connection signal="pressed" from="HBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="HBoxContainer/quit" to="." method="_on_quit_pressed"]

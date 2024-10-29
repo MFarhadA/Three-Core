@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-var revive = 2
-var health = 3
+var revive
+var health
 
 const SPEED = 150.0
 const dashSPEED = 1000.0
@@ -41,9 +41,14 @@ var Checkpoint
 func _ready() -> void:
 	Checkpoint = position
 	Global.playerBody = self
+	health = Save.health
+	revive = Save.revive
 
 func _physics_process(delta: float) -> void:
+	Save.health = health
+	Save.revive = revive
 	#print("FPS: ", Engine.get_frames_per_second())
+	 
 	if Input.is_action_just_pressed("dash") and not isDashing and not isDashCD and not isAttacking and not Dead:
 		_dash()
 	

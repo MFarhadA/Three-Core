@@ -82,6 +82,7 @@ func _skill1():
 	await anim.animation_finished
 	hitbox.disabled = false
 	anim.play("skill11")
+	$Node/skill1.play()
 
 func _aim():
 	if player != null and not Dead:
@@ -98,12 +99,14 @@ func _skill2():
 	bullet.rotation = direction_vector.angle()
 	get_tree().current_scene.add_child(bullet)
 	anim.play("skill22")
+	$Node/skill2.play()
 	hitbox2.disabled = false
 
 func _skill3():
 	original_pos = position
 	target_pos = position + Vector2(0, -100)
 	anim.play("skill3")
+	$Node/skill3.play()
 	while position.y > target_pos.y + 1:
 		position.y = lerp(position.y, target_pos.y, move_speed * get_process_delta_time())
 		await get_tree().create_timer(0.01).timeout
@@ -111,6 +114,7 @@ func _skill3():
 	timeSkill3p.start()
 func _on_timer_skill_3_timeout() -> void:
 	timeSkill3p.stop()
+	$Node/skill3.stop()
 	while position.y < original_pos.y - 1:
 		position.y = lerp(position.y, original_pos.y, move_speed * get_process_delta_time())
 		await get_tree().create_timer(0.01).timeout
@@ -118,6 +122,7 @@ func _on_timer_skill_3_timeout() -> void:
 	isAttacking = false
 func _on_timer_skill_3p_timeout() -> void:
 	_skill3p()
+	$Node/skill3p.play()
 func _skill3p():
 	if player != null and not Dead:
 		var projectile3 = skill3p.instantiate()
@@ -140,11 +145,14 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 func _death():
 	Dead = true
-	Save.LamporDead = true
 	anim.play("death")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if anim.animation == "death": queue_free()
+	if anim.animation == "death":
+		queue_free()
+		Save.revive += 1
+		Save.LamporDead = true
+		get_tree().change_scene_to_packed(load("res://menu/listLevel/levels.tscn"))
 	if anim.animation == "skill11":
 		hitbox.disabled = true
 		isAttacking = false

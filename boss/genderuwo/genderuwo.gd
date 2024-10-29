@@ -134,11 +134,14 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 func _death():
 	Dead = true
 	GlobalAudio._enemyDeath()
-	Save.GenderuwoDead = true
 	anim.play("death")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if anim.animation == "death": queue_free()
+	if anim.animation == "death":
+		queue_free()
+		Save.revive += 1
+		Save.GenderuwoDead = true
+		get_tree().change_scene_to_packed(load("res://menu/listLevel/levels.tscn"))
 	if anim.animation == "skill11":
 		hitbox.disabled = true
 		isAttacking = false

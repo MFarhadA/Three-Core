@@ -131,8 +131,9 @@ func _death():
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "death":
 		queue_free()
+		Save.revive += 1
 		Save.LeakDead = true
-		get_tree().change_scene_to_packed(load("res://menu/listLevel/list_level.tscn"))
+		get_tree().change_scene_to_packed(load("res://menu/listLevel/levels.tscn"))
 	if anim.animation == "skill11":
 		hitbox.disabled = true
 		isAttacking = false

@@ -20,7 +20,7 @@ func _on_start_button_pressed() -> void:
 	await $black_transisition.animation_finished
 	GlobalAudio._main().stop()
 	if Save.skipTutorial == true:
-		get_tree().change_scene_to_packed(start)
+		get_tree().change_scene_to_packed(load("res://menu/listLevel/levels.tscn"))
 	else:
 		get_tree().change_scene_to_packed(start1)
 
@@ -39,5 +39,4 @@ func _on_quit_button_pressed() -> void:
 func _on_back_setting_pressed() -> void:
 	GlobalAudio._click()
 	print("Save.skipTutorial:", Save.skipTutorial)
-	await GlobalAudio._click().finished
 	$menu.play("setting_out")
