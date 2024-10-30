@@ -15,6 +15,8 @@ func _process(delta: float) -> void:
 	parallax.scroll_offset.x -= 100 * delta
 
 func _on_start_button_pressed() -> void:
+	Save.health = 3
+	Save.revive = 3
 	await GlobalAudio._click().finished
 	$black_transisition.play("quit_transisition")
 	await $black_transisition.animation_finished

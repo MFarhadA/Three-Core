@@ -14,8 +14,8 @@ var Dead : bool = false
 @onready var hurtbox = $Hurtbox/CollisionShape2D
 @onready var collission = $CollisionShape2D
 @onready var raycast = $RayCast2D
-@export var skill2p : PackedScene
-@export var skill3p : PackedScene
+@export var skill2p : PackedScene = load("res://boss/lampor/lampor_2p.tscn")
+@export var skill3p : PackedScene = load("res://boss/lampor/lampor_3p.tscn")
 var player : CharacterBody2D
 
 @onready var timeSkill3 = $Skill3/TimerSkill3

@@ -1,9 +1,7 @@
-[gd_scene load_steps=53 format=3 uid="uid://bjsndylbc2kdv"]
+[gd_scene load_steps=51 format=3 uid="uid://bjsndylbc2kdv"]
 
 [ext_resource type="Texture2D" uid="uid://cxu30itd65mcc" path="res://boss/lampor/lampor.png" id="1_bds4y"]
 [ext_resource type="Script" path="res://boss/lampor/lampor.gd" id="1_pfv3w"]
-[ext_resource type="PackedScene" uid="uid://5g6jefgxooyn" path="res://boss/lampor/lampor_2p.tscn" id="2_o5ynl"]
-[ext_resource type="PackedScene" uid="uid://bi3pfdb5hcsg" path="res://boss/lampor/lampor_3p.tscn" id="3_yiru4"]
 [ext_resource type="AudioStream" uid="uid://ioh72cugpnn0" path="res://audio/sfx/basic.mp3" id="5_1rsks"]
 [ext_resource type="AudioStream" uid="uid://camy5ynqr88ha" path="res://audio/music/gameover.mp3" id="5_g8orp"]
 [ext_resource type="AudioStream" uid="uid://dgunjr4dj3l2" path="res://audio/sfx/spell.mp3" id="5_o382m"]
@@ -349,8 +347,6 @@ show_behind_parent = true
 collision_layer = 64
 script = ExtResource("1_pfv3w")
 health = 40
-skill2p = ExtResource("2_o5ynl")
-skill3p = ExtResource("3_yiru4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(10, 0)

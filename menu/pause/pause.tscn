@@ -64,6 +64,7 @@ alignment = 1
 
 [node name="resume" type="Button" parent="HBoxContainer"]
 process_mode = 3
+texture_filter = 1
 layout_mode = 2
 focus_neighbor_top = NodePath("../quit")
 focus_neighbor_bottom = NodePath("../quit")
@@ -71,6 +72,7 @@ text = "LANJUTKAN"
 
 [node name="quit" type="Button" parent="HBoxContainer"]
 process_mode = 3
+texture_filter = 1
 layout_mode = 2
 focus_neighbor_top = NodePath("../resume")
 focus_neighbor_bottom = NodePath("../resume")
